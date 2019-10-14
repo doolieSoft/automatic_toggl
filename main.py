@@ -14,9 +14,18 @@ current_title = None
 app_logged = {}
 f_app_logged = open("app_logged.csv", "r", encoding="utf8")
 for line in f_app_logged:
-    app, project = line.split(";")
-    app_logged[app] = project.rstrip("\n")
+    app, project, default_title = line.split(";")
+    app_logged[app] = {}
+    app_logged[app]['project'] = project
+    app_logged[app]['default_title'] = default_title.rstrip("\n")
 f_app_logged.close()
+
+
+def replace_title_if_default_title_exists_for_app(active_app):
+    if active_app in app_logged.keys():
+        return app_logged[active_app]['default_title']
+    else:
+        return ""
 
 
 def get_titles():
@@ -31,11 +40,19 @@ def get_titles():
     new_title = GetWindowText(GetForegroundWindow())
     while len(new_title) == 0:
         new_title = GetWindowText(GetForegroundWindow())
+
         time.sleep(0.5)
+
+    new_title = new_title.replace(",", " ")
+    active_app = active_window_process_name()
+    default_new_title = replace_title_if_default_title_exists_for_app(active_app)
+
+    if default_new_title != "":
+        new_title = default_new_title
 
     current_title = new_title
     print(current_title)
-    active_app = active_window_process_name()
+
     rapport[current_title] = {}
     rapport[current_title]['exe'] = active_app
     rapport[current_title]['start_date'] = start.strftime("%Y-%m-%d")
@@ -46,8 +63,13 @@ def get_titles():
         # old_title = new_title
         time.sleep(1.0)
         new_title = GetWindowText(GetForegroundWindow())
+        new_title = new_title.replace(",", " ")
 
         active_app = active_window_process_name()
+        default_new_title = replace_title_if_default_title_exists_for_app(active_app)
+
+        if default_new_title != "" and default_new_title != current_title:
+            new_title = default_new_title
         if active_app is not None:
             print("Switching to " + active_app)
 
@@ -59,6 +81,7 @@ def get_titles():
             current_time = datetime.datetime.now()
             time_used = current_time - start
             hours, minutes, seconds = hours_minutes_seconds(time_used)
+
             duration = "{0:02}:{1:02}:{2:02}".format(hours,
                                                      minutes,
                                                      seconds)
@@ -73,8 +96,14 @@ def get_titles():
             else:
                 rapport[current_title]['duration'] += time_used
 
-            print(new_title)
+
+            active_app = active_window_process_name()
+            default_new_title = replace_title_if_default_title_exists_for_app(active_app)
+            if default_new_title !="":
+                new_title = default_new_title
+
             current_title = new_title
+            print(current_title)
             start = current_time
             # ff = (new_title + "," + start.strftime("%d/%m/%Y %H:%M:%S"))
 
@@ -95,6 +124,9 @@ def print_rapport(*args, **kwargs):
     active_app = active_window_process_name()
     if active_app is not None:
         print(active_app)
+    default_current_title = replace_title_if_default_title_exists_for_app(active_app)
+    if default_current_title != "":
+        current_title = default_current_title
 
     current_time = datetime.datetime.now()
     time_used = current_time - start
@@ -150,12 +182,18 @@ def print_rapport(*args, **kwargs):
         duration = "{0:02}:{1:02}:{2:02}".format(hours,
                                                  minutes,
                                                  seconds)
+        title = key
+        if value['exe'] in app_logged.keys():
+            project = app_logged[value['exe']]['project']
+
+        else:
+            project = ""
         f_prep_rapport.write(
-            value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + app_logged[value['exe']] + "," +
+            value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + title + "," + project + "," +
             value['start_date'] + "," +
             value['start_time'] + "," + duration + "\n")
         print(
-            value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + app_logged[value['exe']] + "," +
+            value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + title + "," + project + "," +
             value[
                 'start_date'] + "," +
             value['start_time'] + "," + duration)
@@ -173,11 +211,15 @@ def print_rapport(*args, **kwargs):
             duration = "{0:02}:{1:02}:{2:02}".format(hours,
                                                      minutes,
                                                      seconds)
+            if value['exe'] in app_logged.keys():
+                project = app_logged[value['exe']]['project']
+            else:
+                project = ""
             f_rapport.write(
-                "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + app_logged[value['exe']] + "," + value[
+                "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
                     'start_date'] + "," +
                 value['start_time'] + "," + duration + "\n")
-            print("stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + app_logged[value['exe']] + "," + value[
+            print("stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
                 'start_date'] + "," +
                   value['start_time'] + "," + duration)
 
