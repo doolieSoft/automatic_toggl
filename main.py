@@ -12,13 +12,18 @@ active_app = None
 current_title = None
 
 app_logged = {}
-f_app_logged = open("app_logged.csv", "r", encoding="utf8")
-for line in f_app_logged:
-    app, project, default_title = line.split(";")
-    app_logged[app] = {}
-    app_logged[app]['project'] = project
-    app_logged[app]['default_title'] = default_title.rstrip("\n")
-f_app_logged.close()
+lines_to_keep_in_prep_rapport = []
+
+
+def load_app_logged():
+    global line, app, project
+    f_app_logged = open("app_logged.csv", "r", encoding="utf8")
+    for line in f_app_logged:
+        app, project, default_title = line.split(";")
+        app_logged[app] = {}
+        app_logged[app]['project'] = project
+        app_logged[app]['default_title'] = default_title.rstrip("\n")
+    f_app_logged.close()
 
 
 def replace_title_if_default_title_exists_for_app(active_app):
@@ -26,6 +31,19 @@ def replace_title_if_default_title_exists_for_app(active_app):
         return app_logged[active_app]['default_title']
     else:
         return ""
+
+
+def get_app_name_and_title():
+    app = active_window_process_name()
+    default_title = replace_title_if_default_title_exists_for_app(app)
+
+    if default_title != "":
+        title = default_title
+    else:
+        title = GetWindowText(GetForegroundWindow())
+        title = title.replace(",", " ")
+
+    return app, title
 
 
 def get_titles():
@@ -37,18 +55,10 @@ def get_titles():
 
     pprint.pprint(app_logged)
 
-    new_title = GetWindowText(GetForegroundWindow())
+    new_title = ""
     while len(new_title) == 0:
-        new_title = GetWindowText(GetForegroundWindow())
-
-        time.sleep(0.5)
-
-    new_title = new_title.replace(",", " ")
-    active_app = active_window_process_name()
-    default_new_title = replace_title_if_default_title_exists_for_app(active_app)
-
-    if default_new_title != "":
-        new_title = default_new_title
+        active_app, new_title = get_app_name_and_title()
+        time.sleep(0.1)
 
     current_title = new_title
     print(current_title)
@@ -62,20 +72,13 @@ def get_titles():
     while True:
         # old_title = new_title
         time.sleep(1.0)
-        new_title = GetWindowText(GetForegroundWindow())
-        new_title = new_title.replace(",", " ")
-
-        active_app = active_window_process_name()
-        default_new_title = replace_title_if_default_title_exists_for_app(active_app)
-
-        if default_new_title != "" and default_new_title != current_title:
-            new_title = default_new_title
-        if active_app is not None:
-            print("Switching to " + active_app)
-
-        if len(new_title) == 0:
+        new_title = ""
+        active_app = None
+        while len(new_title) == 0 or active_app is None:
+            active_app, new_title = get_app_name_and_title()
             time.sleep(0.1)
-            continue
+
+        print("Switching to " + active_app)
 
         if current_title != new_title:
             current_time = datetime.datetime.now()
@@ -96,37 +99,35 @@ def get_titles():
             else:
                 rapport[current_title]['duration'] += time_used
 
-            active_app = active_window_process_name()
-            default_new_title = replace_title_if_default_title_exists_for_app(active_app)
-            if default_new_title != "":
-                new_title = default_new_title
+            #            active_app = active_window_process_name()
+            #            default_new_title = replace_title_if_default_title_exists_for_app(active_app)
+            #            if default_new_title != "":
+            #                new_title = default_new_title
 
-            current_title = new_title
-            print(current_title)
+            print(new_title)
             start = current_time
             # ff = (new_title + "," + start.strftime("%d/%m/%Y %H:%M:%S"))
 
-            if current_title not in rapport.keys():
-                rapport[current_title] = {}
-                rapport[current_title]['exe'] = active_app
-                rapport[current_title]['start_date'] = start.strftime("%Y-%m-%d")
-                rapport[current_title]['start_time'] = start.strftime("%H:%M:%S")
-                rapport[current_title]['duration'] = datetime.timedelta()
+            if new_title not in rapport.keys():
+                rapport[new_title] = {}
+                rapport[new_title]['exe'] = active_app
+                rapport[new_title]['start_date'] = start.strftime("%Y-%m-%d")
+                rapport[new_title]['start_time'] = start.strftime("%H:%M:%S")
+                rapport[new_title]['duration'] = datetime.timedelta()
+
+            current_title = new_title
 
 
-def print_rapport(*args, **kwargs):
+def generate_rapport(*args, **kwargs):
     global current_title
     global start
     global rapport
     global app_logged
     global lines_to_keep_in_prep_rapport
 
-    active_app = active_window_process_name()
-    if active_app is not None:
-        print(active_app)
-    default_current_title = replace_title_if_default_title_exists_for_app(active_app)
-    if default_current_title != "":
-        current_title = default_current_title
+
+    print(active_app)
+    print(current_title)
 
     current_time = datetime.datetime.now()
     time_used = current_time - start
@@ -135,8 +136,7 @@ def print_rapport(*args, **kwargs):
                                              minutes,
                                              seconds)
     print("{0} --> time used : {1}".format(current_title, duration))
-    # print("time used : " + str(time_used))
-    print(current_title)
+
     if current_title not in rapport.keys():
         rapport[current_title]['exe'] = active_app
         rapport[current_title]['start_date'] = start.strftime("%Y-%m-%d")
@@ -163,9 +163,9 @@ def print_rapport(*args, **kwargs):
         title = key
         if value['exe'] in app_logged.keys():
             project = app_logged[value['exe']]['project']
-
         else:
             project = ""
+
         f_prep_rapport.write(
             value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + title + "," + project + "," +
             value['start_date'] + "," +
@@ -184,9 +184,11 @@ def print_rapport(*args, **kwargs):
 
 
 def create_rapport_from_prep_rapport():
+    lines_to_keep_in_rapport = []
     current_time = datetime.datetime.now()
     f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
     i = 0
+
     for line in f_prep_rapport:
         if i == 0:
             i += 1
@@ -198,35 +200,13 @@ def create_rapport_from_prep_rapport():
 
     f_rapport = open("rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
     f_rapport.write("Email,Description,Project,Start date,Start time,Duration\n")
+
+    print("Email,Description,Project,Start date,Start time,Duration")
     for line in lines_to_keep_in_rapport:
         f_rapport.write(line)
         print(line.rstrip("\n"))
 
-    # print("Email,Description,Project,Start date,Start time,Duration")
-    # for key, value in rapport.items():
-    #     if value['exe'] in app_logged.keys():
-    #         hours, minutes, seconds = hours_minutes_seconds(value['duration'])
-    #         duration = "{0:02}:{1:02}:{2:02}".format(hours,
-    #                                                  minutes,
-    #                                                  seconds)
-    #         if value['exe'] in app_logged.keys():
-    #             project = app_logged[value['exe']]['project']
-    #         else:
-    #             project = ""
-    #         f_rapport.write(
-    #             "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
-    #                 'start_date'] + "," +
-    #             value['start_time'] + "," + duration + "\n")
-    #         print("stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
-    #             'start_date'] + "," +
-    #               value['start_time'] + "," + duration)
-
     f_rapport.close()
-
-
-def handler_sigterm():
-    print("sigterm")
-    sys.exit(0)
 
 
 def active_window_process_name():
@@ -243,12 +223,9 @@ def hours_minutes_seconds(td):
 
 
 if __name__ == '__main__':
-    global lines_to_keep_in_prep_rapport
-    global lines_to_keep_in_rapport
-    lines_to_keep_in_prep_rapport = []
-    lines_to_keep_in_rapport = []
-    signal.signal(signal.SIGTERM, handler_sigterm)
-    signal.signal(signal.SIGINT, print_rapport)
+    load_app_logged()
+
+    signal.signal(signal.SIGINT, generate_rapport)
 
     start = datetime.datetime.now()
     current_time = datetime.datetime.now()
@@ -282,4 +259,5 @@ if __name__ == '__main__':
                 rapport[description]['duration'] = datetime.timedelta()
 
         f_prep_rapport.close()
+
     get_titles()
