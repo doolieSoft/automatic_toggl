@@ -46,7 +46,7 @@ def get_app_name_and_title():
     return app, title
 
 
-def get_titles():
+def log_running_applications():
     global current_title
     global active_app
     global start
@@ -124,7 +124,6 @@ def generate_prep_rapport(*args, **kwargs):
     global rapport
     global app_logged
     global lines_to_keep_in_prep_rapport
-
 
     print(active_app)
     print(current_title)
@@ -260,4 +259,4 @@ if __name__ == '__main__':
 
         f_prep_rapport.close()
 
-    get_titles()
+    log_running_applications()
