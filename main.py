@@ -96,10 +96,9 @@ def get_titles():
             else:
                 rapport[current_title]['duration'] += time_used
 
-
             active_app = active_window_process_name()
             default_new_title = replace_title_if_default_title_exists_for_app(active_app)
-            if default_new_title !="":
+            if default_new_title != "":
                 new_title = default_new_title
 
             current_title = new_title
@@ -120,6 +119,7 @@ def print_rapport(*args, **kwargs):
     global start
     global rapport
     global app_logged
+    global lines_to_keep_in_prep_rapport
 
     active_app = active_window_process_name()
     if active_app is not None:
@@ -146,37 +146,15 @@ def print_rapport(*args, **kwargs):
         rapport[current_title]['duration'] += time_used
 
     print()
-    if os.path.exists("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv") is True:
-        f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
-        i = 0
-        for line in f_prep_rapport:
-            if i == 0:
-                i += 1
-                continue
-            app, email, description, project, start_date, start_time, duration = line.split(",")
-            print("Description = " + description)
-            if description not in rapport.keys():
-                rapport[description] = {}
-                rapport[description]['exe'] = app
-                rapport[description]['start_date'] = start_date
-                rapport[description]['start_time'] = start_time
-                hh, mm, ss = duration.split(":")
-                rapport[description]['duration'] = datetime.timedelta(hours=int(hh), minutes=int(mm), seconds=int(ss))
-            else:
-                print("Description in rapport.keys " + description)
-                rapport[description]['exe'] = app
-                rapport[description]['start_date'] = start_date
-                rapport[description]['start_time'] = start_time
-                hh, mm, ss = duration.split(":")
-                rapport[description]['duration'] = datetime.timedelta(hours=int(hh), minutes=int(mm), seconds=int(ss)) + \
-                                                   rapport[description]['duration']
-
-        f_prep_rapport.close()
 
     f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
     f_prep_rapport.write("Active app,Email,Description,Project,Start date,Start time,Duration\n")
 
     print("Active app,Email,Description,Project,Start date,Start time,Duration")
+
+    for line in lines_to_keep_in_prep_rapport:
+        f_prep_rapport.write(line)
+
     for key, value in rapport.items():
         hours, minutes, seconds = hours_minutes_seconds(value['duration'])
         duration = "{0:02}:{1:02}:{2:02}".format(hours,
@@ -201,30 +179,49 @@ def print_rapport(*args, **kwargs):
     f_prep_rapport.close()
     print()
 
+    create_rapport_from_prep_rapport()
+    sys.exit(0)
+
+
+def create_rapport_from_prep_rapport():
+    current_time = datetime.datetime.now()
+    f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
+    i = 0
+    for line in f_prep_rapport:
+        if i == 0:
+            i += 1
+            continue
+        app, email, description, project, start_date, start_time, duration = line.split(",")
+        if app in app_logged.keys():
+            lines_to_keep_in_rapport.append(
+                email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
+
     f_rapport = open("rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
     f_rapport.write("Email,Description,Project,Start date,Start time,Duration\n")
+    for line in lines_to_keep_in_rapport:
+        f_rapport.write(line)
+        print(line.rstrip("\n"))
 
-    print("Email,Description,Project,Start date,Start time,Duration")
-    for key, value in rapport.items():
-        if value['exe'] in app_logged.keys():
-            hours, minutes, seconds = hours_minutes_seconds(value['duration'])
-            duration = "{0:02}:{1:02}:{2:02}".format(hours,
-                                                     minutes,
-                                                     seconds)
-            if value['exe'] in app_logged.keys():
-                project = app_logged[value['exe']]['project']
-            else:
-                project = ""
-            f_rapport.write(
-                "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
-                    'start_date'] + "," +
-                value['start_time'] + "," + duration + "\n")
-            print("stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
-                'start_date'] + "," +
-                  value['start_time'] + "," + duration)
+    # print("Email,Description,Project,Start date,Start time,Duration")
+    # for key, value in rapport.items():
+    #     if value['exe'] in app_logged.keys():
+    #         hours, minutes, seconds = hours_minutes_seconds(value['duration'])
+    #         duration = "{0:02}:{1:02}:{2:02}".format(hours,
+    #                                                  minutes,
+    #                                                  seconds)
+    #         if value['exe'] in app_logged.keys():
+    #             project = app_logged[value['exe']]['project']
+    #         else:
+    #             project = ""
+    #         f_rapport.write(
+    #             "stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
+    #                 'start_date'] + "," +
+    #             value['start_time'] + "," + duration + "\n")
+    #         print("stefano.crapanzano@chu.ulg.ac.be" + "," + key + "," + project + "," + value[
+    #             'start_date'] + "," +
+    #               value['start_time'] + "," + duration)
 
     f_rapport.close()
-    sys.exit(0)
 
 
 def handler_sigterm():
@@ -246,7 +243,43 @@ def hours_minutes_seconds(td):
 
 
 if __name__ == '__main__':
+    global lines_to_keep_in_prep_rapport
+    global lines_to_keep_in_rapport
+    lines_to_keep_in_prep_rapport = []
+    lines_to_keep_in_rapport = []
     signal.signal(signal.SIGTERM, handler_sigterm)
     signal.signal(signal.SIGINT, print_rapport)
+
     start = datetime.datetime.now()
+    current_time = datetime.datetime.now()
+
+    if os.path.exists("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv") is True:
+        f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
+        i = 0
+
+        for line in f_prep_rapport:
+            if i == 0:
+                i += 1
+                continue
+            app, email, description, project, start_date, start_time, duration = line.split(",")
+            print("Description = " + description)
+
+            lines_to_keep_in_prep_rapport.append(line)
+
+            if description not in rapport.keys():
+                rapport[description] = {}
+                rapport[description]['exe'] = app
+                rapport[description]['start_date'] = start.strftime("%Y-%m-%d")
+                rapport[description]['start_time'] = start.strftime("%H:%M:%S")
+                hh, mm, ss = duration.split(":")
+                rapport[description]['duration'] = datetime.timedelta()
+            else:
+                print("Description in rapport.keys " + description)
+                rapport[description]['exe'] = app
+                rapport[description]['start_date'] = start.strftime("%Y-%m-%d")
+                rapport[description]['start_time'] = start.strftime("%H:%M:%S")
+                hh, mm, ss = duration.split(":")
+                rapport[description]['duration'] = datetime.timedelta()
+
+        f_prep_rapport.close()
     get_titles()
