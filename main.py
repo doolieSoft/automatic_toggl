@@ -118,7 +118,7 @@ def get_titles():
             current_title = new_title
 
 
-def generate_rapport(*args, **kwargs):
+def generate_prep_rapport(*args, **kwargs):
     global current_title
     global start
     global rapport
@@ -179,11 +179,11 @@ def generate_rapport(*args, **kwargs):
     f_prep_rapport.close()
     print()
 
-    create_rapport_from_prep_rapport()
+    generate_rapport_from_prep_rapport()
     sys.exit(0)
 
 
-def create_rapport_from_prep_rapport():
+def generate_rapport_from_prep_rapport():
     lines_to_keep_in_rapport = []
     current_time = datetime.datetime.now()
     f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
@@ -225,7 +225,7 @@ def hours_minutes_seconds(td):
 if __name__ == '__main__':
     load_app_logged()
 
-    signal.signal(signal.SIGINT, generate_rapport)
+    signal.signal(signal.SIGINT, generate_prep_rapport)
 
     start = datetime.datetime.now()
     current_time = datetime.datetime.now()
