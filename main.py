@@ -46,7 +46,7 @@ def get_app_name_and_title():
         title = default_title
     else:
         title = GetWindowText(GetForegroundWindow())
-        title = title.replace(",", " ")
+        title = title.replace(",", " ").replace("\""," ")
 
     return app, title
 
