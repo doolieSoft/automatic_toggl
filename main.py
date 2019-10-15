@@ -78,12 +78,16 @@ def log_running_applications():
         # old_title = new_title
         time.sleep(1.0)
         new_title = ""
+        current_app = active_app
         active_app = None
         while len(new_title) == 0 or active_app is None:
             active_app, new_title = get_app_name_and_title()
             time.sleep(0.1)
 
-        print("Switching to " + active_app)
+        if current_app != active_app:
+            print("Switching to " + active_app)
+        else:
+            print(active_app)
 
         if current_title != new_title:
             current_time = datetime.datetime.now()
