@@ -125,7 +125,12 @@ def generate_prep_rapport(*args, **kwargs):
     global app_logged
     global lines_to_keep_in_prep_rapport
 
+    load_app_logged()
+
     print(active_app)
+    corrected_current_title = replace_title_if_default_title_exists_for_app(active_app)
+    if corrected_current_title != "":
+        current_title = corrected_current_title
     print(current_title)
 
     current_time = datetime.datetime.now()
