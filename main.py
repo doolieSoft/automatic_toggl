@@ -18,7 +18,12 @@ lines_to_keep_in_prep_rapport = []
 def load_app_logged():
     global line, app, project
     f_app_logged = open("app_logged.csv", "r", encoding="utf8")
+    i = 0
     for line in f_app_logged:
+        if i == 0:
+            i += 1
+            continue
+
         app, project, default_title = line.split(";")
         app_logged[app] = {}
         app_logged[app]['project'] = project
@@ -199,6 +204,9 @@ def generate_rapport_from_prep_rapport():
             continue
         app, email, description, project, start_date, start_time, duration = line.split(",")
         if app in app_logged.keys():
+            if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
+                description = replace_title_if_default_title_exists_for_app(app)
+
             lines_to_keep_in_rapport.append(
                 email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
 
@@ -245,7 +253,12 @@ if __name__ == '__main__':
             app, email, description, project, start_date, start_time, duration = line.split(",")
             print("Description = " + description)
 
-            lines_to_keep_in_prep_rapport.append(line)
+            if app in app_logged.keys():
+                if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
+                    description = replace_title_if_default_title_exists_for_app(app)
+
+            lines_to_keep_in_prep_rapport.append(
+                app + "," + email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
 
             if description not in rapport.keys():
                 rapport[description] = {}
