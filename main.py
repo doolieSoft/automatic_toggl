@@ -5,6 +5,15 @@ import datetime
 import psutil, win32process, win32gui, time
 import pprint
 import os
+import glob
+
+EMAIL_ACCOUNT = "stefano.crapanzano@chu.ulg.ac.be"
+
+HEADER_PREP_RAPPORT = "Active app,Email,Description,Project,Start date,Start time,Duration"
+
+HEADER_RAPPORT = "Email,Description,Project,Start date,Start time,Duration"
+
+NB_COLUMN_IN_PREP_RAPPORT = 7
 
 rapport = {}
 start = datetime.datetime.now()
@@ -46,7 +55,7 @@ def get_app_name_and_title():
         title = default_title
     else:
         title = GetWindowText(GetForegroundWindow())
-        title = title.replace(",", " ").replace("\""," ")
+        title = title.replace(",", " ").replace("\"", " ")
 
     return app, title
 
@@ -75,7 +84,6 @@ def log_running_applications():
     rapport[current_title]['duration'] = datetime.timedelta()
 
     while True:
-        # old_title = new_title
         time.sleep(1.0)
         new_title = ""
         current_app = active_app
@@ -108,14 +116,8 @@ def log_running_applications():
             else:
                 rapport[current_title]['duration'] += time_used
 
-            #            active_app = active_window_process_name()
-            #            default_new_title = replace_title_if_default_title_exists_for_app(active_app)
-            #            if default_new_title != "":
-            #                new_title = default_new_title
-
             print(new_title)
             start = current_time
-            # ff = (new_title + "," + start.strftime("%d/%m/%Y %H:%M:%S"))
 
             if new_title not in rapport.keys():
                 rapport[new_title] = {}
@@ -161,12 +163,9 @@ def generate_prep_rapport(*args, **kwargs):
     print()
 
     f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
-    f_prep_rapport.write("Active app,Email,Description,Project,Start date,Start time,Duration\n")
+    f_prep_rapport.write(HEADER_PREP_RAPPORT + "\n")
 
-    print("Active app,Email,Description,Project,Start date,Start time,Duration")
-
-    for line in lines_to_keep_in_prep_rapport:
-        f_prep_rapport.write(line)
+    print(HEADER_PREP_RAPPORT)
 
     for key, value in rapport.items():
         hours, minutes, seconds = hours_minutes_seconds(value['duration'])
@@ -180,11 +179,11 @@ def generate_prep_rapport(*args, **kwargs):
             project = ""
 
         f_prep_rapport.write(
-            value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + title + "," + project + "," +
+            value['exe'] + "," + EMAIL_ACCOUNT + "," + title + "," + project + "," +
             value['start_date'] + "," +
             value['start_time'] + "," + duration + "\n")
         print(
-            value['exe'] + "," + "stefano.crapanzano@chu.ulg.ac.be" + "," + title + "," + project + "," +
+            value['exe'] + "," + EMAIL_ACCOUNT + "," + title + "," + project + "," +
             value[
                 'start_date'] + "," +
             value['start_time'] + "," + duration)
@@ -199,25 +198,35 @@ def generate_prep_rapport(*args, **kwargs):
 def generate_rapport_from_prep_rapport():
     lines_to_keep_in_rapport = []
     current_time = datetime.datetime.now()
-    f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
-    i = 0
+    prep_rapport_files = ["prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"]
+    prep_rapport_files.extend(
+        sorted(glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-TO-UPLOAD*.csv"), reverse=False))
 
-    for line in f_prep_rapport:
-        if i == 0:
-            i += 1
-            continue
-        app, email, description, project, start_date, start_time, duration = line.split(",")
-        if app in app_logged.keys():
-            if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
-                description = replace_title_if_default_title_exists_for_app(app)
+    for prep_rapport_file in prep_rapport_files:
+        f_prep_rapport = open(prep_rapport_file, "r", encoding="utf8")
+        i = 0
 
-            lines_to_keep_in_rapport.append(
-                email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
+        for line in f_prep_rapport:
+            if i == 0:
+                i += 1
+                continue
+            if len(line.split(",")) != NB_COLUMN_IN_PREP_RAPPORT:
+                print("Probleme avec la ligne. Elle ne contient pas assez de colonne : " + line)
+                os.system("pause")
+                continue
+            app, email, description, project, start_date, start_time, duration = line.split(",")
+            if app in app_logged.keys():
+                if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
+                    description = replace_title_if_default_title_exists_for_app(app)
+
+                lines_to_keep_in_rapport.append(
+                    email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
+        f_prep_rapport.close()
 
     f_rapport = open("rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
-    f_rapport.write("Email,Description,Project,Start date,Start time,Duration\n")
+    f_rapport.write(HEADER_RAPPORT + "\n")
 
-    print("Email,Description,Project,Start date,Start time,Duration")
+    print(HEADER_RAPPORT)
     for line in lines_to_keep_in_rapport:
         f_rapport.write(line)
         print(line.rstrip("\n"))
@@ -246,39 +255,24 @@ if __name__ == '__main__':
     start = datetime.datetime.now()
     current_time = datetime.datetime.now()
 
-    if os.path.exists("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv") is True:
-        f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "r", encoding="utf8")
-        i = 0
+    prep_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"
+    prep_new_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-TO-UPLOAD"
 
-        for line in f_prep_rapport:
-            if i == 0:
-                i += 1
-                continue
-            app, email, description, project, start_date, start_time, duration = line.split(",")
-            print("Description = " + description)
+    if os.path.exists(prep_name) is True:
+        prep_files_list_to_upload = sorted(
+            glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-TO-UPLOAD*.csv"), reverse=True)
+        if len(prep_files_list_to_upload) > 0:
+            pprint.pprint(prep_files_list_to_upload)
+            print(prep_files_list_to_upload[0])
+            num_seq = len(prep_files_list_to_upload)
 
-            if app in app_logged.keys():
-                if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
-                    description = replace_title_if_default_title_exists_for_app(app)
-
-            lines_to_keep_in_prep_rapport.append(
-                app + "," + email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
-
-            if description not in rapport.keys():
-                rapport[description] = {}
-                rapport[description]['exe'] = app
-                rapport[description]['start_date'] = start.strftime("%Y-%m-%d")
-                rapport[description]['start_time'] = start.strftime("%H:%M:%S")
-                hh, mm, ss = duration.split(":")
-                rapport[description]['duration'] = datetime.timedelta()
-            else:
-                print("Description in rapport.keys " + description)
-                rapport[description]['exe'] = app
-                rapport[description]['start_date'] = start.strftime("%Y-%m-%d")
-                rapport[description]['start_time'] = start.strftime("%H:%M:%S")
-                hh, mm, ss = duration.split(":")
-                rapport[description]['duration'] = datetime.timedelta()
-
-        f_prep_rapport.close()
+            prep_new_name_with_num_seq = prep_new_name + str(num_seq)
+            i = num_seq
+            if os.path.exists(prep_new_name_with_num_seq + ".csv") is True:
+                while os.path.exists(prep_new_name + str(i) + ".csv") is True:
+                    i += 1
+            os.rename(prep_name, prep_new_name + str(i) + ".csv")
+        else:
+            os.rename(prep_name, prep_new_name + ".csv")
 
     log_running_applications()
