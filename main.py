@@ -40,24 +40,33 @@ def load_app_logged():
     f_app_logged.close()
 
 
-def replace_title_if_default_title_exists_for_app(active_app):
-    if active_app in app_logged.keys():
-        return app_logged[active_app]['default_title']
+def get_default_title_for_app(app):
+    if app in app_logged.keys():
+        return app_logged[app]['default_title']
     else:
         return ""
 
 
-def get_app_name_and_title():
-    app = active_window_process_name()
-    default_title = replace_title_if_default_title_exists_for_app(app)
+def get_active_app_name_and_title():
+    active_app = None
+    while active_app is None:
+        active_app = active_window_process_name()
+        time.sleep(0.1)
+
+    default_title = get_default_title_for_app(active_app)
 
     if default_title != "":
         title = default_title
     else:
-        title = GetWindowText(GetForegroundWindow())
-        title = title.replace(",", " ").replace("\"", " ")
+        title = ""
+        while len(title) == 0:
+            title = GetWindowText(GetForegroundWindow())
+            title = title.strip()
+            time.sleep(0.1)
 
-    return app, title
+        title = title.strip().replace(",", " ").replace("\"", " ")
+
+    return active_app, title
 
 
 def log_running_applications():
@@ -69,10 +78,7 @@ def log_running_applications():
 
     pprint.pprint(app_logged)
 
-    new_title = ""
-    while len(new_title) == 0:
-        active_app, new_title = get_app_name_and_title()
-        time.sleep(0.1)
+    active_app, new_title = get_active_app_name_and_title()
 
     current_title = new_title
     print()
@@ -82,17 +88,13 @@ def log_running_applications():
 
     while True:
         time.sleep(3.0)
-        new_title = ""
         current_app = active_app
-        active_app = None
-        while len(new_title) == 0 or active_app is None:
-            active_app, new_title = get_app_name_and_title()
-            time.sleep(0.1)
+        active_app, new_title = get_active_app_name_and_title()
 
         if current_app != active_app:
             print("Switching to " + active_app)
         else:
-            print(active_app)
+            print(current_app)
 
         if current_title != new_title:
             time_used = stop_timer(current_title)
@@ -105,7 +107,6 @@ def log_running_applications():
             print("{0} --> time used : {1}".format(current_title, duration))
             print()
             print(new_title)
-
             start = start_timer(new_title)
 
             current_title = new_title
@@ -164,7 +165,7 @@ def generate_prep_rapport(*args, **kwargs):
     load_app_logged()
 
     print(active_app)
-    corrected_current_title = replace_title_if_default_title_exists_for_app(active_app)
+    corrected_current_title = get_default_title_for_app(active_app)
     if corrected_current_title != "":
         current_title = corrected_current_title
     print(current_title)
@@ -234,7 +235,7 @@ def generate_rapport_from_prep_rapport():
             app, email, description, project, start_date, start_time, duration = line.split(",")
             if app in app_logged.keys():
                 if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
-                    description = replace_title_if_default_title_exists_for_app(app)
+                    description = get_default_title_for_app(app)
 
                 lines_to_keep_in_rapport.append(
                     email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
