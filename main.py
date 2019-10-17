@@ -75,16 +75,13 @@ def log_running_applications():
         time.sleep(0.1)
 
     current_title = new_title
+    print()
     print(current_title)
 
-    rapport[current_title] = {}
-    rapport[current_title]['exe'] = active_app
-    rapport[current_title]['start_date'] = start.strftime("%Y-%m-%d")
-    rapport[current_title]['start_time'] = start.strftime("%H:%M:%S")
-    rapport[current_title]['duration'] = datetime.timedelta()
+    start = start_timer(current_title)
 
     while True:
-        time.sleep(1.0)
+        time.sleep(3.0)
         new_title = ""
         current_app = active_app
         active_app = None
@@ -98,35 +95,63 @@ def log_running_applications():
             print(active_app)
 
         if current_title != new_title:
-            current_time = datetime.datetime.now()
-            time_used = current_time - start
+            time_used = stop_timer(current_title)
             hours, minutes, seconds = hours_minutes_seconds(time_used)
 
             duration = "{0:02}:{1:02}:{2:02}".format(hours,
                                                      minutes,
                                                      seconds)
+
             print("{0} --> time used : {1}".format(current_title, duration))
-
-            if current_title not in rapport.keys():
-                rapport[current_title] = {}
-                rapport[current_title]['exe'] = active_app
-                rapport[current_title]['start_date'] = start.strftime("%Y-%m-%d")
-                rapport[current_title]['start_time'] = start.strftime("%H:%M:%S")
-                rapport[current_title]['duration'] = time_used
-            else:
-                rapport[current_title]['duration'] += time_used
-
+            print()
             print(new_title)
-            start = current_time
 
-            if new_title not in rapport.keys():
-                rapport[new_title] = {}
-                rapport[new_title]['exe'] = active_app
-                rapport[new_title]['start_date'] = start.strftime("%Y-%m-%d")
-                rapport[new_title]['start_time'] = start.strftime("%H:%M:%S")
-                rapport[new_title]['duration'] = datetime.timedelta()
+            start = start_timer(new_title)
 
             current_title = new_title
+
+
+def start_timer(description):
+    print()
+    start = datetime.datetime.now()
+
+    if description not in rapport.keys():
+        rapport[description] = []
+        rapport[description].append({})
+        rapport[description][-1]['exe'] = active_app
+        rapport[description][-1]['start_date'] = start.strftime("%Y-%m-%d")
+        rapport[description][-1]['start_time'] = start.strftime("%H:%M:%S")
+        rapport[description][-1]['duration'] = datetime.timedelta()
+    else:
+        rapport[description].append({})
+        rapport[description][-1]['exe'] = active_app
+        rapport[description][-1]['start_date'] = start.strftime("%Y-%m-%d")
+        rapport[description][-1]['start_time'] = start.strftime("%H:%M:%S")
+        rapport[description][-1]['duration'] = datetime.timedelta()
+
+    print("In start timer")
+    print(description)
+    print(rapport[description][-1]['start_time'])
+    print()
+
+    return start
+
+
+def stop_timer(current_title):
+    global start
+    global rapport
+    global active_app
+    stop_time = datetime.datetime.now()
+    time_used = stop_time - start
+    rapport[current_title][-1]['duration'] += time_used
+
+    print()
+    print("In stop timer")
+    print(current_title)
+    print(rapport[current_title][-1]['start_time'])
+    print(time_used)
+    print()
+    return time_used
 
 
 def generate_prep_rapport(*args, **kwargs):
@@ -144,21 +169,12 @@ def generate_prep_rapport(*args, **kwargs):
         current_title = corrected_current_title
     print(current_title)
 
-    current_time = datetime.datetime.now()
-    time_used = current_time - start
+    time_used = stop_timer(current_title)
     hours, minutes, seconds = hours_minutes_seconds(time_used)
     duration = "{0:02}:{1:02}:{2:02}".format(hours,
                                              minutes,
                                              seconds)
     print("{0} --> time used : {1}".format(current_title, duration))
-
-    if current_title not in rapport.keys():
-        rapport[current_title]['exe'] = active_app
-        rapport[current_title]['start_date'] = start.strftime("%Y-%m-%d")
-        rapport[current_title]['start_time'] = start.strftime("%H:%M:%S")
-        rapport[current_title]['duration'] = time_used
-    else:
-        rapport[current_title]['duration'] += time_used
 
     print()
 
@@ -168,25 +184,26 @@ def generate_prep_rapport(*args, **kwargs):
     print(HEADER_PREP_RAPPORT)
 
     for key, value in rapport.items():
-        hours, minutes, seconds = hours_minutes_seconds(value['duration'])
-        duration = "{0:02}:{1:02}:{2:02}".format(hours,
-                                                 minutes,
-                                                 seconds)
-        title = key
-        if value['exe'] in app_logged.keys():
-            project = app_logged[value['exe']]['project']
-        else:
-            project = ""
+        for i in range(len(value)):
+            hours, minutes, seconds = hours_minutes_seconds(value[i]['duration'])
+            duration = "{0:02}:{1:02}:{2:02}".format(hours,
+                                                     minutes,
+                                                     seconds)
+            title = key
+            if value[i]['exe'] in app_logged.keys():
+                project = app_logged[value[i]['exe']]['project']
+            else:
+                project = ""
 
-        f_prep_rapport.write(
-            value['exe'] + "," + EMAIL_ACCOUNT + "," + title + "," + project + "," +
-            value['start_date'] + "," +
-            value['start_time'] + "," + duration + "\n")
-        print(
-            value['exe'] + "," + EMAIL_ACCOUNT + "," + title + "," + project + "," +
-            value[
-                'start_date'] + "," +
-            value['start_time'] + "," + duration)
+            f_prep_rapport.write(
+                value[i]['exe'] + "," + EMAIL_ACCOUNT + "," + title + "," + project + "," +
+                value[i]['start_date'] + "," +
+                value[i]['start_time'] + "," + duration + "\n")
+            print(
+                value[i]['exe'] + "," + EMAIL_ACCOUNT + "," + title + "," + project + "," +
+                value[i][
+                    'start_date'] + "," +
+                value[i]['start_time'] + "," + duration)
 
     f_prep_rapport.close()
     print()
@@ -200,7 +217,7 @@ def generate_rapport_from_prep_rapport():
     current_time = datetime.datetime.now()
     prep_rapport_files = ["prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"]
     prep_rapport_files.extend(
-        sorted(glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-TO-UPLOAD*.csv"), reverse=False))
+        sorted(glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"), reverse=False))
 
     for prep_rapport_file in prep_rapport_files:
         f_prep_rapport = open(prep_rapport_file, "r", encoding="utf8")
@@ -256,11 +273,11 @@ if __name__ == '__main__':
     current_time = datetime.datetime.now()
 
     prep_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"
-    prep_new_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-TO-UPLOAD"
+    prep_new_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot"
 
     if os.path.exists(prep_name) is True:
         prep_files_list_to_upload = sorted(
-            glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-TO-UPLOAD*.csv"), reverse=True)
+            glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"), reverse=True)
         if len(prep_files_list_to_upload) > 0:
             pprint.pprint(prep_files_list_to_upload)
             print(prep_files_list_to_upload[0])
