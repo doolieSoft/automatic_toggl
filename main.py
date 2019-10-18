@@ -237,8 +237,11 @@ def generate_rapport_from_prep_rapport():
                 if app_logged[app]['default_title'] != "" and description != app_logged[app]['default_title']:
                     description = get_default_title_for_app(app)
 
-                lines_to_keep_in_rapport.append(
-                    email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
+                hours, minutes, seconds = duration.split(":")
+                td = datetime.timedelta(hours=int(hours), minutes=int(minutes), seconds=int(seconds))
+                if td.seconds >= 5:
+                    lines_to_keep_in_rapport.append(
+                        email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
         f_prep_rapport.close()
 
     f_rapport = open("rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
