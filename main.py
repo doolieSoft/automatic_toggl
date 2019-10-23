@@ -87,7 +87,7 @@ def log_running_applications():
     start = start_timer(current_title)
 
     while True:
-        time.sleep(3.0)
+        time.sleep(1.0)
         current_app = active_app
         active_app, new_title = get_active_app_name_and_title()
 
@@ -239,7 +239,7 @@ def generate_rapport_from_prep_rapport():
 
                 hours, minutes, seconds = duration.split(":")
                 td = datetime.timedelta(hours=int(hours), minutes=int(minutes), seconds=int(seconds))
-                if td.seconds >= 5:
+                if td.seconds >= 2:
                     lines_to_keep_in_rapport.append(
                         email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
         f_prep_rapport.close()
