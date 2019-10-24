@@ -7,6 +7,9 @@ import pprint
 import os
 import glob
 
+PREP_RAPPORT_FOLDER = "prep_rapport\\"
+RAPPORT_FOLDER = "rapport\\"
+
 EMAIL_ACCOUNT = "stefano.crapanzano@chu.ulg.ac.be"
 
 HEADER_PREP_RAPPORT = "Active app,Email,Description,Project,Start date,Start time,Duration"
@@ -179,7 +182,8 @@ def generate_prep_rapport(*args, **kwargs):
 
     print()
 
-    f_prep_rapport = open("prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
+    f_prep_rapport = open(PREP_RAPPORT_FOLDER + "prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w",
+                          encoding="utf8")
     f_prep_rapport.write(HEADER_PREP_RAPPORT + "\n")
 
     print(HEADER_PREP_RAPPORT)
@@ -216,9 +220,10 @@ def generate_prep_rapport(*args, **kwargs):
 def generate_rapport_from_prep_rapport():
     lines_to_keep_in_rapport = []
     current_time = datetime.datetime.now()
-    prep_rapport_files = ["prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"]
+    prep_rapport_files = [PREP_RAPPORT_FOLDER + "prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"]
     prep_rapport_files.extend(
-        sorted(glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"), reverse=False))
+        sorted(glob.glob(PREP_RAPPORT_FOLDER + "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"),
+               reverse=False))
 
     for prep_rapport_file in prep_rapport_files:
         f_prep_rapport = open(prep_rapport_file, "r", encoding="utf8")
@@ -244,7 +249,7 @@ def generate_rapport_from_prep_rapport():
                         email + "," + description + "," + project + "," + start_date + "," + start_time + "," + duration)
         f_prep_rapport.close()
 
-    f_rapport = open("rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
+    f_rapport = open(RAPPORT_FOLDER + "rapport-" + current_time.strftime("%Y-%m-%d") + ".csv", "w", encoding="utf8")
     f_rapport.write(HEADER_RAPPORT + "\n")
 
     print(HEADER_RAPPORT)
@@ -281,7 +286,8 @@ if __name__ == '__main__':
 
     if os.path.exists(prep_name) is True:
         prep_files_list_to_upload = sorted(
-            glob.glob("prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"), reverse=True)
+            glob.glob(PREP_RAPPORT_FOLDER + "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"),
+            reverse=True)
         if len(prep_files_list_to_upload) > 0:
             pprint.pprint(prep_files_list_to_upload)
             print(prep_files_list_to_upload[0])
@@ -289,11 +295,11 @@ if __name__ == '__main__':
 
             prep_new_name_with_num_seq = prep_new_name + str(num_seq)
             i = num_seq
-            if os.path.exists(prep_new_name_with_num_seq + ".csv") is True:
+            if os.path.exists(PREP_RAPPORT_FOLDER + prep_new_name_with_num_seq + ".csv") is True:
                 while os.path.exists(prep_new_name + str(i) + ".csv") is True:
                     i += 1
-            os.rename(prep_name, prep_new_name + str(i) + ".csv")
+            os.rename(PREP_RAPPORT_FOLDER + prep_name, PREP_RAPPORT_FOLDER + prep_new_name + str(i) + ".csv")
         else:
-            os.rename(prep_name, prep_new_name + ".csv")
+            os.rename(PREP_RAPPORT_FOLDER + prep_name, PREP_RAPPORT_FOLDER + prep_new_name + ".csv")
 
     log_running_applications()
