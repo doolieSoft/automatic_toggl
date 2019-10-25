@@ -284,7 +284,7 @@ if __name__ == '__main__':
     prep_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + ".csv"
     prep_new_name = "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot"
 
-    if os.path.exists(prep_name) is True:
+    if os.path.exists(PREP_RAPPORT_FOLDER + prep_name) is True:
         prep_files_list_to_upload = sorted(
             glob.glob(PREP_RAPPORT_FOLDER + "prep_rapport-" + current_time.strftime("%Y-%m-%d") + "-Lot*.csv"),
             reverse=True)
