@@ -9,6 +9,8 @@ TACHE_DIVERSE = "Tâche diverse"
 
 DURATION = 'duration'
 
+PROJECT = 'project'
+
 STOP = 'stop'
 
 START = 'start'
@@ -21,6 +23,7 @@ class Automatic_Toggl(object):
         self.titles = {}
         self.current_exe = None
         self.current_title = None
+        self.current_project = None
         self.current_start_datetime = None
         self.current_stop_datetime = None
         self.app_logged = {}
@@ -49,12 +52,14 @@ class Automatic_Toggl(object):
             self.current_exe = exe
             self.current_start_datetime = start_datetime
             self.current_stop_datetime = None
+            self.current_project = self.app_logged[exe]['project']
             if self.app_logged[exe]['default_title'] == "":
                 self.current_title = title
             else:
                 self.current_title = self.app_logged[exe]['default_title']
         else:
             self.current_exe = None
+            self.current_project = None
             self.current_start_datetime = None
             self.current_stop_datetime = None
 
@@ -72,6 +77,7 @@ class Automatic_Toggl(object):
                 , STOP: stop_datetime
                 , EXE: self.current_exe
                 , DURATION: stop_datetime - self.current_start_datetime
+                , PROJECT: self.current_project
             })
 
         self.current_title = None
@@ -271,11 +277,13 @@ class Automatic_Toggl(object):
 
             f_rapport.write(self.get_line_from_dict(line) + "\n")
             if 'old_title' in line:
-                print("Old_Title ... stefano.crapanzano@chuliege.be,{},...,{},{},{}".format(line['title'], line[START],
-                                                                                            line[DURATION],
-                                                                                            line['old_title']))
+                print(
+                    "Old_Title ... stefano.crapanzano@chuliege.be,{},{},{},{},{}".format(line['title'], line["project"],
+                                                                                         line[START],
+                                                                                         line[DURATION],
+                                                                                         line['old_title']))
             else:
-                print("stefano.crapanzano@chuliege.be,{},...,{},{}".format(line['title'], line[START],
+                print("stefano.crapanzano@chuliege.be,{},{},{},{}".format(line['title'], line["project"], line[START],
                                                                            line[DURATION]))
 
         f_rapport.close()
@@ -287,7 +295,6 @@ class Automatic_Toggl(object):
             f_prepa.close()
 
     def get_line_from_dict(self, line):
-        # TODO rechercher le projet au lieu de mettre IT
         date_from = line['start'].strftime("%Y-%m-%d")
         time_from = line['start'].strftime("%H:%M:%S")
         hours, minutes, seconds = self.hours_minutes_seconds(line['duration'])
@@ -296,7 +303,7 @@ class Automatic_Toggl(object):
                                                  seconds)
         return "stefano.crapanzano@chuliege.be" \
                + "," + line['title'] \
-               + "," + "IT" \
+               + "," + line['project'] \
                + "," + date_from \
                + "," + time_from \
                + "," + duration
@@ -440,7 +447,6 @@ class TestAutomaticToggl(unittest.TestCase):
         datetime_from = datetime.datetime.strptime("2019-10-24 08:30:00", "%Y-%m-%d %H:%M:%S")
         datetime_until = datetime.datetime.strptime("2019-10-24 17:00:00", "%Y-%m-%d %H:%M:%S")
 
-        # list_of_files_to_load = [TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24_reduit.csv"]
         list_of_files_to_load = [TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24.csv",
                                  TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24-Lot.csv",
                                  TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24-Lot1.csv",
