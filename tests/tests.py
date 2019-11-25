@@ -161,17 +161,20 @@ class Automatic_Toggl(object):
                 if title_usage[0] not in result:
                     result.append(title_usage[0])
 
+        print()
         return result
 
-    def generate_rapport(self, most_used_title):
+    def generate_rapport(self, datetime_from, datetime_until, most_used_title):
         titles_copy = self.titles.copy()
         most_used_titles_grouped = {}
         total_not_in_most_used = 0
         total_in_most_used = 0
 
+        print("Most used title : ")
         for title in most_used_title:
-            print(title)
+            print("{} used {} ".format(title, self.get_usage(datetime_from, datetime_until, title)))
 
+        print()
         for title in titles_copy:
             if title in most_used_title:
                 most_used_titles_grouped[title] = titles_copy[title]
@@ -195,29 +198,27 @@ class Automatic_Toggl(object):
         while i < len(sorted_default_title_log) - 1:
             current_start = sorted_default_title_log[i][START]
             current_duration = sorted_default_title_log[i][DURATION]
-            total_duration_to_add = datetime.timedelta()
+            total_duration_to_add = current_duration
             merged = False
 
             n = 1
-            while current_start + current_duration + total_duration_to_add == sorted_default_title_log[i + n][START]:
-                total_duration_to_add += current_duration
+            while current_start + total_duration_to_add == sorted_default_title_log[i + n][START]:
+                total_duration_to_add += sorted_default_title_log[i + n][DURATION]
                 merged = True
                 n += 1
-                if i + n < len(sorted_default_title_log):
-                    current_duration = sorted_default_title_log[i + n][DURATION]
-                else:
+                if not i + n < len(sorted_default_title_log):
                     break
 
             new_line_default_title_log = sorted_default_title_log[i]
             if merged == True:
-                new_line_default_title_log[DURATION] = total_duration_to_add + sorted_default_title_log[i][DURATION]
+                new_line_default_title_log[DURATION] = total_duration_to_add
                 new_line_default_title_log[STOP] = new_line_default_title_log[START] + new_line_default_title_log[
                     DURATION]
                 compressed_default_title_log.append(new_line_default_title_log)
                 i += n
             else:
                 compressed_default_title_log.append(sorted_default_title_log[i])
-            i += 1
+                i += 1
 
         most_used_titles_grouped[TACHE_DIVERSE] = compressed_default_title_log
         total_default_title_grouped = len(compressed_default_title_log)
@@ -380,7 +381,7 @@ class TestAutomaticToggl(unittest.TestCase):
     def test_can_load_prep_rapport(self):
         automatic_toggl = Automatic_Toggl()
 
-        list_of_files_to_load = ["prep_rapport-2019-10-24_reduit.csv"
+        list_of_files_to_load = ["test_rapport\\prep_rapport_test3.csv"
                                  # "prep_rapport-2019-10-24-Lot.csv",
                                  # "prep_rapport-2019-10-24-Lot1.csv",
                                  # "prep_rapport-2019-10-24-Lot2.csv"
