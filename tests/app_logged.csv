@@ -1,0 +1,24 @@
+executable_name;project;default_title
+notepad.exe;IT;
+cmd.exe;IT;
+OUTLOOK.EXE;Helpdesk général;
+notepad++.exe;IT;
+EXCEL.EXE;Tâches diverses;
+TOTALCMD64.EXE;Tâches diverses;
+Ssms.exe;IT;
+ngstw32.exe;Helpdesk général;
+saplogon.exe;Exploration SAP;
+idea64.exe;IT;
+heidisql.exe;IT;
+filezilla.exe;Helpdesk général;
+TortoiseMerge.exe;IT;
+TortoiseProc.exe;IT;
+mmc.exe;IT;
+chrome.exe;Tâches diverses;
+explorer.exe;IT;Navigation système de fichier
+pycharm64.exe;IT;Programmation
+AcroRd32.exe;Tâches diverses;Lecture documentation
+Greenshot.exe;Helpdesk général;
+grepWin.exe;IT;
+firefox.exe;Tâches diverses;Lecture documentation
+WinMergeU.exe;IT;
