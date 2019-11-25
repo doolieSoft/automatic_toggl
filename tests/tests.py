@@ -244,6 +244,12 @@ class Automatic_Toggl(object):
                 print("stefano.crapanzano@chuliege.be,{},...,{},{}".format(line['title'], line[START],
                                                                            line[DURATION]))
 
+    def load_prep_rapports(self, list_of_files_to_load):
+        for file in list_of_files_to_load:
+            f_prepa = open(file, "r", encoding="utf8")
+            self.load_prep_rapport(f_prepa)
+            f_prepa.close()
+
 
 ################################### UNITTEST START ###################################
 
@@ -257,6 +263,24 @@ class TestAutomaticToggl(unittest.TestCase):
             "%m"), self.start_datetime.strftime("%d")
         self.today = "{}-{}-{}".format(str(year), str(month), str(day))
 
+        self.init_toggl()
+        self.golden_usages = [('Toto va à la ferme 1', datetime.timedelta(0, 9122)),
+                              ('Toto va à la ferme 2', datetime.timedelta(0, 9120)),
+                              ('Toto va à la ferme 3', datetime.timedelta(0, 8450)),
+                              ('Toto va à la ferme 4', datetime.timedelta(0, 2160)),
+                              ('Toto va à la ferme 5', datetime.timedelta(0, 1740)), ('a', datetime.timedelta(0, 2)),
+                              ('b', datetime.timedelta(0, 2)), ('c', datetime.timedelta(0, 2)),
+                              ('d', datetime.timedelta(0, 2))]
+        self.golden_reversed_usages = [('a', datetime.timedelta(0, 2)), ('b', datetime.timedelta(0, 2)),
+                                       ('c', datetime.timedelta(0, 2)),
+                                       ('d', datetime.timedelta(0, 2)),
+                                       ('Toto va à la ferme 5', datetime.timedelta(0, 1740)),
+                                       ('Toto va à la ferme 4', datetime.timedelta(0, 2160)),
+                                       ('Toto va à la ferme 3', datetime.timedelta(0, 8450)),
+                                       ('Toto va à la ferme 2', datetime.timedelta(0, 9120)),
+                                       ('Toto va à la ferme 1', datetime.timedelta(0, 9122))]
+
+    def init_toggl(self):
         self.titles = [
             ("Toto va à la ferme 1", "08:30:00", "08:35:00", "chrome.exe")
             , ("Toto va à la ferme 2", "08:35:00", "08:37:00", "firefox.exe")
@@ -303,13 +327,17 @@ class TestAutomaticToggl(unittest.TestCase):
         datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
 
         title_usage = self.toggl.get_usage(datetime_from, datetime_until, title="Toto va à la ferme 1")
+        self.assertTrue(title_usage == datetime.timedelta(days=0, hours=2, minutes=32, seconds=2))
 
     def test_can_get_usages(self):
         datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
         datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
 
         titles_usages = self.toggl.get_usages(datetime_from, datetime_until)
+        self.assertTrue(titles_usages == self.golden_usages)
+
         reversed_titles_usages = self.toggl.get_usages(datetime_from, datetime_until, reverse=False)
+        self.assertTrue(reversed_titles_usages == self.golden_reversed_usages)
 
     def test_can_get_log_between_2_datetimes(self):
         datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
@@ -350,43 +378,43 @@ class TestAutomaticToggl(unittest.TestCase):
         self.assertTrue(len(exe_used_between_dates) == 2)
 
     def test_can_load_prep_rapport(self):
-        loaded_toggl = Automatic_Toggl()
+        automatic_toggl = Automatic_Toggl()
+
         list_of_files_to_load = ["prep_rapport-2019-10-24_reduit.csv"
                                  # "prep_rapport-2019-10-24-Lot.csv",
                                  # "prep_rapport-2019-10-24-Lot1.csv",
                                  # "prep_rapport-2019-10-24-Lot2.csv"
                                  ]
-        for file in list_of_files_to_load:
-            f_prepa = open(file, "r", encoding="utf8")
-            loaded_toggl.load_prep_rapport(f_prepa)
-            f_prepa.close()
 
-        self.assertTrue(len(loaded_toggl.get_log_content()) > 0)
-        datetime_from = datetime.datetime.strptime("2019-10-24 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
-        datetime_until = datetime.datetime.strptime("2019-10-24 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+        automatic_toggl.load_prep_rapports(list_of_files_to_load)
+        self.assertTrue(len(automatic_toggl.get_log_content()) > 0)
 
-        most_used_titles = loaded_toggl.get_most_used_titles(datetime_from, datetime_until)
+    def test_can_generate_rapport(self):
+        datetime_from = datetime.datetime.strptime("2019-10-24 08:30:00", "%Y-%m-%d %H:%M:%S")
+        datetime_until = datetime.datetime.strptime("2019-10-24 17:00:00", "%Y-%m-%d %H:%M:%S")
+        automatic_toggl = Automatic_Toggl()
+        list_of_files_to_load = ["prep_rapport-2019-10-24_reduit.csv"]
 
-        # titles_log = loaded_toggl.get_log(datetime_from, datetime_until)
-        # for title in titles_log:
-        #    print(title)
-        #    print(titles_log[title])
-        loaded_toggl.generate_rapport(most_used_title=most_used_titles)
+        automatic_toggl.load_prep_rapports(list_of_files_to_load)
+        most_used_titles = automatic_toggl.get_most_used_titles(datetime_from, datetime_until)
 
-    def test_can_replace_title_if_total_time_used_is_less_than_timedelta_param(self):
-        datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
-        datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+        automatic_toggl.generate_rapport(most_used_title=most_used_titles)
 
-        titles_usages = self.toggl.get_usages(datetime_from, datetime_until)
-        titles_usages_seconds = [x[1].seconds for x in titles_usages]
-        # print(titles_usages)
-        total_seconds = sum(titles_usages_seconds)
-        for title_usage in titles_usages:
-            # print("{} / {} = {}".format(title_usage[1].seconds, total_seconds,
-            #                           str(title_usage[1].seconds / total_seconds)))
-            pass
 
-        # self.assertTrue(False)
+    # def test_can_replace_title_if_total_time_used_is_less_than_timedelta_param(self):
+    #     datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+    #     datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+    #
+    #     titles_usages = self.toggl.get_usages(datetime_from, datetime_until)
+    #     titles_usages_seconds = [x[1].seconds for x in titles_usages]
+    #     # print(titles_usages)
+    #     total_seconds = sum(titles_usages_seconds)
+    #     for title_usage in titles_usages:
+    #         # print("{} / {} = {}".format(title_usage[1].seconds, total_seconds,
+    #         #                           str(title_usage[1].seconds / total_seconds)))
+    #         pass
+    #
+    #     # self.assertTrue(False)
 
 
 if __name__ == '__main__':
