@@ -3,9 +3,13 @@ import time
 import unittest
 import random
 
+TEST_RAPPORT_FOLDER = "test_rapport\\"
+
 TACHE_DIVERSE = "Tâche diverse"
 
 DURATION = 'duration'
+
+PROJECT = 'project'
 
 STOP = 'stop'
 
@@ -19,20 +23,50 @@ class Automatic_Toggl(object):
         self.titles = {}
         self.current_exe = None
         self.current_title = None
+        self.current_project = None
         self.current_start_datetime = None
         self.current_stop_datetime = None
+        self.app_logged = {}
+        self.HEADER_RAPPORT = "Email,Description,Project,Start date,Start time,Duration"
+        self.load_app_logged()
+
+    def load_app_logged(self):
+
+        f_app_logged = open("app_logged.csv", "r", encoding="utf8")
+        i = 0
+        for line in f_app_logged:
+            if i == 0:
+                i += 1
+                continue
+
+            app, project, default_title = line.split(";")
+            self.app_logged[app] = {}
+            self.app_logged[app]['project'] = project
+            self.app_logged[app]['default_title'] = default_title.rstrip("\n")
+
+        f_app_logged.close()
 
     def start_log(self, title, exe, start_datetime):
-        self.current_exe = exe
-        self.current_title = title
-        self.current_start_datetime = start_datetime
-        self.current_stop_datetime = None
+
+        if exe in self.app_logged:
+            self.current_exe = exe
+            self.current_start_datetime = start_datetime
+            self.current_stop_datetime = None
+            self.current_project = self.app_logged[exe]['project']
+            if self.app_logged[exe]['default_title'] == "":
+                self.current_title = title
+            else:
+                self.current_title = self.app_logged[exe]['default_title']
+        else:
+            self.current_exe = None
+            self.current_project = None
+            self.current_start_datetime = None
+            self.current_stop_datetime = None
 
     def stop_log(self, stop_datetime=None):
         if self.current_start_datetime is None or stop_datetime is None or self.current_exe is None:
             # TODO lancer une exception
-            print("hello")
-            pass
+            return
 
         if self.current_title not in self.titles:
             self.titles[self.current_title] = []
@@ -43,6 +77,7 @@ class Automatic_Toggl(object):
                 , STOP: stop_datetime
                 , EXE: self.current_exe
                 , DURATION: stop_datetime - self.current_start_datetime
+                , PROJECT: self.current_project
             })
 
         self.current_title = None
@@ -50,14 +85,14 @@ class Automatic_Toggl(object):
         self.current_start_datetime = None
         self.current_stop_datetime = None
 
+    def hours_minutes_seconds(self, td):
+        return td.seconds // 3600, (td.seconds // 60) % 60, td.seconds % 60
+
     def get_current_recorded_title_and_exe(self):
         return self.current_exe, self.current_title
 
     def get_log_content(self):
         return self.titles.items()
-
-    def hours_minutes_seconds(td):
-        return td.seconds // 3600, (td.seconds // 60) % 60, td.seconds % 60
 
     def get_usage(self, datetime_from, datetime_until, title, exe=None):
         titles_time_used_between = self.get_log(datetime_from, datetime_until, exe, title)
@@ -165,32 +200,31 @@ class Automatic_Toggl(object):
         return result
 
     def generate_rapport(self, datetime_from, datetime_until, most_used_title):
-        titles_copy = self.titles.copy()
         most_used_titles_grouped = {}
         total_not_in_most_used = 0
         total_in_most_used = 0
 
-        print("Most used title : ")
-        for title in most_used_title:
-            print("{} used {} ".format(title, self.get_usage(datetime_from, datetime_until, title)))
+        # print("Most used title : ")
+        # for title in most_used_title:
+        #    print("{} used {} ".format(title, self.get_usage(datetime_from, datetime_until, title)))
 
-        print()
-        for title in titles_copy:
+        # print()
+        for title in self.titles:
             if title in most_used_title:
-                most_used_titles_grouped[title] = titles_copy[title]
-                total_in_most_used += len(titles_copy[title])
+                most_used_titles_grouped[title] = self.titles[title]
+                total_in_most_used += len(self.titles[title])
             else:
                 lines = []
-                for line in titles_copy[title]:
+                for line in self.titles[title]:
                     line['old_title'] = title
                     lines.append(line)
 
                 if TACHE_DIVERSE not in most_used_titles_grouped:
                     most_used_titles_grouped[TACHE_DIVERSE] = lines
-                    total_not_in_most_used += len(titles_copy[title])
+                    total_not_in_most_used += len(self.titles[title])
                 else:
                     most_used_titles_grouped[TACHE_DIVERSE].extend(lines)
-                    total_not_in_most_used += len(titles_copy[title])
+                    total_not_in_most_used += len(self.titles[title])
 
         sorted_default_title_log = sorted(most_used_titles_grouped[TACHE_DIVERSE], key=lambda e: e[START])
         compressed_default_title_log = []
@@ -236,14 +270,43 @@ class Automatic_Toggl(object):
         print("total_not_in_most_used = " + str(total_not_in_most_used))
         print("then they are grouped : total_default_title_grouped = " + str(total_default_title_grouped))
         print("grand total most_used_titles_grouped = " + str(len(lines)))
+        f_rapport = open(TEST_RAPPORT_FOLDER + "rapport-2019-11-25.csv", "w")
+        f_rapport.write(self.HEADER_RAPPORT + "\n")
+
         for line in sorted(lines, key=lambda e: e['start']):
+
+            f_rapport.write(self.get_line_from_dict(line) + "\n")
             if 'old_title' in line:
-                print("Old_Title ... stefano.crapanzano@chuliege.be,{},...,{},{},{}".format(line['title'], line[START],
-                                                                                            line[DURATION],
-                                                                                            line['old_title']))
+                print(
+                    "Old_Title ... stefano.crapanzano@chuliege.be,{},{},{},{},{}".format(line['title'], line["project"],
+                                                                                         line[START],
+                                                                                         line[DURATION],
+                                                                                         line['old_title']))
             else:
-                print("stefano.crapanzano@chuliege.be,{},...,{},{}".format(line['title'], line[START],
+                print("stefano.crapanzano@chuliege.be,{},{},{},{}".format(line['title'], line["project"], line[START],
                                                                            line[DURATION]))
+
+        f_rapport.close()
+
+    def load_prep_rapports(self, list_of_files_to_load):
+        for file in list_of_files_to_load:
+            f_prepa = open(file, "r", encoding="utf8")
+            self.load_prep_rapport(f_prepa)
+            f_prepa.close()
+
+    def get_line_from_dict(self, line):
+        date_from = line['start'].strftime("%Y-%m-%d")
+        time_from = line['start'].strftime("%H:%M:%S")
+        hours, minutes, seconds = self.hours_minutes_seconds(line['duration'])
+        duration = "{0:02}:{1:02}:{2:02}".format(hours,
+                                                 minutes,
+                                                 seconds)
+        return "stefano.crapanzano@chuliege.be" \
+               + "," + line['title'] \
+               + "," + line['project'] \
+               + "," + date_from \
+               + "," + time_from \
+               + "," + duration
 
 
 ################################### UNITTEST START ###################################
@@ -258,6 +321,18 @@ class TestAutomaticToggl(unittest.TestCase):
             "%m"), self.start_datetime.strftime("%d")
         self.today = "{}-{}-{}".format(str(year), str(month), str(day))
 
+        self.init_toggl()
+        self.golden_usages = [('Toto va à la ferme 1', datetime.timedelta(0, 9122)),
+                              ('Lecture documentation', datetime.timedelta(0, 9120)),
+                              ('Toto va à la ferme 3', datetime.timedelta(0, 8450)),
+                              ('Navigation système de fichier', datetime.timedelta(0, 2168))]
+
+        self.golden_reversed_usages = [('Navigation système de fichier', datetime.timedelta(0, 2168)),
+                                       ('Toto va à la ferme 3', datetime.timedelta(0, 8450)),
+                                       ('Lecture documentation', datetime.timedelta(0, 9120)),
+                                       ('Toto va à la ferme 1', datetime.timedelta(0, 9122))]
+
+    def init_toggl(self):
         self.titles = [
             ("Toto va à la ferme 1", "08:30:00", "08:35:00", "chrome.exe")
             , ("Toto va à la ferme 2", "08:35:00", "08:37:00", "firefox.exe")
@@ -304,20 +379,24 @@ class TestAutomaticToggl(unittest.TestCase):
         datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
 
         title_usage = self.toggl.get_usage(datetime_from, datetime_until, title="Toto va à la ferme 1")
+        self.assertTrue(title_usage == datetime.timedelta(days=0, hours=2, minutes=32, seconds=2))
 
     def test_can_get_usages(self):
         datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
         datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
 
         titles_usages = self.toggl.get_usages(datetime_from, datetime_until)
+        self.assertTrue(titles_usages == self.golden_usages)
+
         reversed_titles_usages = self.toggl.get_usages(datetime_from, datetime_until, reverse=False)
+        self.assertTrue(reversed_titles_usages == self.golden_reversed_usages)
 
     def test_can_get_log_between_2_datetimes(self):
         datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
         datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
 
         titles_used_between_dates = self.toggl.get_log(datetime_from, datetime_until)
-        self.assertTrue(len(titles_used_between_dates) == 9)
+        self.assertTrue(len(titles_used_between_dates) == 4)
 
     def test_can_get_log_between_2_datetimes_for_one_title_of_one_exe(self):
         datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
@@ -341,7 +420,7 @@ class TestAutomaticToggl(unittest.TestCase):
         datetime_until = datetime.datetime.strptime("{} 16:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
 
         exe_log_between_dates = self.toggl.get_log(datetime_from, datetime_until, exe="explorer.exe")
-        self.assertTrue(len(exe_log_between_dates) == 5)
+        self.assertTrue(len(exe_log_between_dates) == 1)
 
     def test_can_get_exe_between_2_datetimes(self):
         datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
@@ -351,43 +430,49 @@ class TestAutomaticToggl(unittest.TestCase):
         self.assertTrue(len(exe_used_between_dates) == 2)
 
     def test_can_load_prep_rapport(self):
-        loaded_toggl = Automatic_Toggl()
-        list_of_files_to_load = ["test_rapport\\prep_rapport_test3.csv"
+        automatic_toggl = Automatic_Toggl()
+
+        list_of_files_to_load = [(TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24.csv")
                                  # "prep_rapport-2019-10-24-Lot.csv",
                                  # "prep_rapport-2019-10-24-Lot1.csv",
                                  # "prep_rapport-2019-10-24-Lot2.csv"
                                  ]
-        for file in list_of_files_to_load:
-            f_prepa = open(file, "r", encoding="utf8")
-            loaded_toggl.load_prep_rapport(f_prepa)
-            f_prepa.close()
 
-        self.assertTrue(len(loaded_toggl.get_log_content()) > 0)
-        datetime_from = datetime.datetime.strptime("2019-11-04 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
-        datetime_until = datetime.datetime.strptime("2019-11-04 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+        automatic_toggl.load_prep_rapports(list_of_files_to_load)
+        self.assertTrue(len(automatic_toggl.get_log_content()) > 0)
 
-        most_used_titles = loaded_toggl.get_most_used_titles(datetime_from, datetime_until)
+    def test_can_generate_rapport(self):
+        automatic_toggl = Automatic_Toggl()
 
-        # titles_log = loaded_toggl.get_log(datetime_from, datetime_until)
-        # for title in titles_log:
-        #    print(title)
-        #    print(titles_log[title])
-        loaded_toggl.generate_rapport(datetime_from, datetime_until, most_used_title=most_used_titles)
+        datetime_from = datetime.datetime.strptime("2019-10-24 08:30:00", "%Y-%m-%d %H:%M:%S")
+        datetime_until = datetime.datetime.strptime("2019-10-24 17:00:00", "%Y-%m-%d %H:%M:%S")
 
-    def test_can_replace_title_if_total_time_used_is_less_than_timedelta_param(self):
-        datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
-        datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+        list_of_files_to_load = [TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24.csv",
+                                 TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24-Lot.csv",
+                                 TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24-Lot1.csv",
+                                 TEST_RAPPORT_FOLDER + "prep_rapport-2019-10-24-Lot2.csv"
+                                 ]
 
-        titles_usages = self.toggl.get_usages(datetime_from, datetime_until)
-        titles_usages_seconds = [x[1].seconds for x in titles_usages]
-        # print(titles_usages)
-        total_seconds = sum(titles_usages_seconds)
-        for title_usage in titles_usages:
-            # print("{} / {} = {}".format(title_usage[1].seconds, total_seconds,
-            #                           str(title_usage[1].seconds / total_seconds)))
-            pass
+        automatic_toggl.load_prep_rapports(list_of_files_to_load)
+        most_used_titles = automatic_toggl.get_most_used_titles(datetime_from, datetime_until)
 
-        # self.assertTrue(False)
+        automatic_toggl.generate_rapport(datetime_from=datetime_from, datetime_until=datetime_until,
+                                         most_used_title=most_used_titles)
+
+    # def test_can_replace_title_if_total_time_used_is_less_than_timedelta_param(self):
+    #     datetime_from = datetime.datetime.strptime("{} 08:30:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+    #     datetime_until = datetime.datetime.strptime("{} 17:00:00".format(self.today), "%Y-%m-%d %H:%M:%S")
+    #
+    #     titles_usages = self.toggl.get_usages(datetime_from, datetime_until)
+    #     titles_usages_seconds = [x[1].seconds for x in titles_usages]
+    #     # print(titles_usages)
+    #     total_seconds = sum(titles_usages_seconds)
+    #     for title_usage in titles_usages:
+    #         # print("{} / {} = {}".format(title_usage[1].seconds, total_seconds,
+    #         #                           str(title_usage[1].seconds / total_seconds)))
+    #         pass
+    #
+    #     # self.assertTrue(False)
 
 
 if __name__ == '__main__':
