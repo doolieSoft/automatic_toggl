@@ -1,11 +1,15 @@
 import signal
 import sys
+
+import wmi
 from win32gui import GetWindowText, GetForegroundWindow
 import datetime
-import psutil, win32process, win32gui, time
+import win32process, win32gui, time
 import pprint
 import os
 import glob
+
+c = wmi.WMI()
 
 PREP_RAPPORT_FOLDER = "prep_rapport\\"
 RAPPORT_FOLDER = "rapport\\"
@@ -53,7 +57,7 @@ def get_default_title_for_app(app):
 def get_active_app_name_and_title():
     active_app = None
     while active_app is None:
-        active_app = active_window_process_name()
+        active_app = get_app_name(win32gui.GetForegroundWindow())
         time.sleep(0.1)
 
     default_title = get_default_title_for_app(active_app)
@@ -260,14 +264,18 @@ def generate_rapport_from_prep_rapport():
     f_rapport.close()
 
 
-def active_window_process_name():
+def get_app_name(hwnd):
+    """Get application filename given hwnd."""
+    exe = ""
     try:
-        pid = win32process.GetWindowThreadProcessId(
-            win32gui.GetForegroundWindow())  # This produces a list of PIDs active window relates to
-        return psutil.Process(pid[-1]).name()  # pid[-1] is the most likely to survive last longer
+        _, pid = win32process.GetWindowThreadProcessId(hwnd)
+        for p in c.query('SELECT Name FROM Win32_Process WHERE ProcessId = %s' % str(pid)):
+            exe = p.Name
+            break
     except:
         return None
-
+    else:
+        return exe
 
 def hours_minutes_seconds(td):
     return td.seconds // 3600, (td.seconds // 60) % 60, td.seconds % 60
