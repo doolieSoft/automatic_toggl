@@ -1,0 +1,45 @@
+executable_name;project;default_title
+notepad.exe;IT;
+cmd.exe;IT;
+OUTLOOK.EXE;Helpdesk général;
+notepad++.exe;IT;
+EXCEL.EXE;Tâches diverses;
+TOTALCMD64.EXE;Tâches diverses;
+Ssms.exe;IT;
+ngstw32.exe;Helpdesk général;
+saplogon.exe;Exploration SAP;
+idea64.exe;IT;
+heidisql.exe;IT;
+filezilla.exe;Helpdesk général;
+TortoiseMerge.exe;IT;
+TortoiseProc.exe;IT;
+mmc.exe;IT;
+chrome.exe;Tâches diverses;
+explorer.exe;IT;Navigation système de fichier
+pycharm64.exe;IT;
+AcroRd32.exe;Tâches diverses;Lecture documentation
+Greenshot.exe;Helpdesk général;
+grepWin.exe;IT;
+firefox.exe;Tâches diverses;Lecture documentation
+WinMergeU.exe;IT;
+eclipse.exe;IT;Programmation
+SourceTree.exe;IT;Programmation
+Skype.exe;IT;Programmation
+SpringToolSuite4.exe;IT;Programmation
+netbeans64.exe;IT;Programmation
+vlc.exe;Tâches diverses;Lecture documentation
+Spotify.exe;Tâches diverses;Lecture documentation
+sqliteadmin.exe;IT;Programmation
+SciTE.exe;IT;Programmation
+Meld.exe;IT;Programmation
+kindle.exe;Tâches diverses;Lecture documentation
+mstsc.exe;IT;Programmation
+devenv.exe;IT;Programmation
+Recorder.exe;IT;Programmation
+Lifesize.exe;Tâches diverses;
+thunderbird.exe;Helpdesk général;
+dwm.exe;IT;Programmation
+GitHubDesktop.exe;IT;Programmation
+inkscape.exe;IT;
+msedge.exe;Tâches diverses;Lecture documentation
+brave.exe;Tâches diverses;Lecture documentation

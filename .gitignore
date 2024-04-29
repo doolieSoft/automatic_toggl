@@ -1,0 +1,7 @@
+/env/
+/venv/
+/app_logged.csv.bak
+/chargement_2022-09-19.csv
+/pyvenv.cfg
+/rapport/
+/prep_rapport/
