@@ -1,0 +1,22 @@
+Active app,Email,Description,Project,Start date,Start time,Duration
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - python  main.py,IT,2020-02-17,16:55:14,00:00:02
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-02-17,16:55:16,00:00:54
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-02-17,16:56:24,00:00:01
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-02-17,16:56:28,00:00:01
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de Réception - Zimbra - Stefano Crapanzano - Outlook,Helpdesk général,2020-02-17,16:56:10,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-02-17,16:56:13,00:00:11
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-02-17,16:56:56,00:00:05
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP Logon 750,Exploration SAP,2020-02-17,16:56:26,00:00:02
+pycharm64.exe,stefano.crapanzano@chu.ulg.ac.be,Programmation,IT,2020-02-17,16:56:29,00:00:01
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,PE2_203 - sftp://PE2U2FTP@153.89.110.38 - FileZilla,Helpdesk général,2020-02-17,16:56:30,00:00:02
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_FTP_MONITOR.pl - Notepad++ [Administrator],IT,2020-02-17,16:56:33,00:00:22
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-02-17,16:57:01,00:00:06
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-02-17,17:01:59,00:00:00
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-02-17,16:57:08,00:00:02
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-02-17,16:57:21,00:00:03
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_FTP_MONITOR.pl : Working Base  Revision 1116 - CHL_ERP_FTP_MONITOR.pl : Working Copy],IT,2020-02-17,16:57:11,00:00:10
+ngstw32.exe,stefano.crapanzano@chu.ulg.ac.be,Netop Invité,Helpdesk général,2020-02-17,16:57:25,00:00:04
+ngstw32.exe,stefano.crapanzano@chu.ulg.ac.be,Connexion à l'aide de l'authentification Windows,Helpdesk général,2020-02-17,16:57:30,00:00:03
+ngstw32.exe,stefano.crapanzano@chu.ulg.ac.be,Netop,Helpdesk général,2020-02-17,16:57:33,00:00:01
+ngstw32.exe,stefano.crapanzano@chu.ulg.ac.be,Netop,Helpdesk général,2020-02-17,17:01:57,00:00:01
+ngstw32.exe,stefano.crapanzano@chu.ulg.ac.be,erpftp - Netop Remote Control,Helpdesk général,2020-02-17,16:57:35,00:04:22

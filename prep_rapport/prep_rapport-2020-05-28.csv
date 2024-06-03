@@ -1,0 +1,91 @@
+Active app,Email,Description,Project,Start date,Start time,Duration
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - python  main.py,IT,2020-05-28,08:33:36,00:00:02
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - python  main.py,IT,2020-05-28,16:59:53,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,08:33:38,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,08:35:34,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,10:06:45,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,11:35:56,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,11:36:01,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,11:36:24,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,11:37:26,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,11:39:20,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,11:39:51,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,13:40:14,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,13:40:28,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,13:42:02,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-05-28,15:23:31,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,08:33:40,00:00:34
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,08:35:35,00:04:33
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,08:41:50,00:33:08
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,10:06:46,01:28:18
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,11:37:27,00:00:02
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Tâches diverses,2020-05-28,11:43:29,00:00:03
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,11:46:30,00:00:22
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,13:40:15,00:00:13
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,13:40:51,00:00:17
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,13:42:04,01:41:12
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,15:23:33,01:36:19
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,AE2_203 - sftp://AE2U2FTP@153.89.110.38 - FileZilla,Helpdesk général,2020-05-28,08:34:15,00:00:03
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,Iepacs - sftp://kofaxchu@iepacs.chu.ulg.ac.be - FileZilla,Helpdesk général,2020-05-28,08:34:19,00:01:15
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,Iepacs - sftp://kofaxchu@iepacs.chu.ulg.ac.be - FileZilla,Helpdesk général,2020-05-28,09:14:58,00:51:34
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,Iepacs - sftp://kofaxchu@iepacs.chu.ulg.ac.be - FileZilla,Helpdesk général,2020-05-28,10:06:42,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de Réception - Zimbra - Stefano Crapanzano - Outlook,Helpdesk général,2020-05-28,08:40:09,00:01:40
+mmc.exe,stefano.crapanzano@chu.ulg.ac.be,Active Directory Users and Computers,IT,2020-05-28,10:06:33,00:00:02
+mmc.exe,stefano.crapanzano@chu.ulg.ac.be,Active Directory Users and Computers,IT,2020-05-28,10:06:41,00:00:01
+mmc.exe,stefano.crapanzano@chu.ulg.ac.be,Active Directory Users and Computers,IT,2020-05-28,15:23:16,00:00:02
+mmc.exe,stefano.crapanzano@chu.ulg.ac.be,Active Directory Users and Computers,IT,2020-05-28,15:23:28,00:00:02
+mmc.exe,stefano.crapanzano@chu.ulg.ac.be,Rechercher Utilisateurs  contacts et groupes,IT,2020-05-28,10:06:35,00:00:06
+mmc.exe,stefano.crapanzano@chu.ulg.ac.be,Rechercher Utilisateurs  contacts et groupes,IT,2020-05-28,15:23:19,00:00:09
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Sans titre - Google Chrome,Tâches diverses,2020-05-28,11:35:04,00:00:02
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,11:35:07,00:00:49
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,11:35:59,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,11:36:15,00:00:09
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,11:37:33,00:00:01
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Exploration SAP,2020-05-28,11:39:26,00:00:06
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,11:43:06,00:00:22
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,11:46:53,01:53:20
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,13:40:29,00:00:21
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,13:41:27,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,P203 CHU Comment créer une condition de type  frais administratif  - Bienvenue! Vous pouvez poser une demande de Service Desk ERP for HealthCare parmi les options fournies. - Service d'assistance - Google Chrome,Tâches diverses,2020-05-28,13:41:37,00:00:25
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP GUI for Windows 750,Exploration SAP,2020-05-28,11:35:58,00:00:01
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Afficher Demande d'achat 61183,Exploration SAP,2020-05-28,11:36:02,00:00:04
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Afficher Demande d'achat 61183,Exploration SAP,2020-05-28,11:36:29,00:00:02
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP Easy Access Menu de base Applications financières-économiques,Exploration SAP,2020-05-28,11:36:07,00:00:08
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP Easy Access Menu de base Applications financières-économiques,Exploration SAP,2020-05-28,11:36:26,00:00:03
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP Easy Access Menu de base Applications financières-économiques,Exploration SAP,2020-05-28,11:38:03,00:00:09
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP Easy Access Menu de base Applications financières-économiques,Exploration SAP,2020-05-28,11:39:32,00:00:08
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Sélectionner document,Exploration SAP,2020-05-28,11:36:32,00:00:02
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Sélectionner document,Exploration SAP,2020-05-28,11:36:35,00:00:01
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,TypeAheadPopup,Exploration SAP,2020-05-28,11:36:34,00:00:01
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,TypeAheadPopup,Exploration SAP,2020-05-28,11:42:16,00:00:02
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Commande interv. 40 4000101510 créée par Gilles VANDERKELEN,Exploration SAP,2020-05-28,11:36:36,00:00:49
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Commande interv. 40 4000101510 créée par Gilles VANDERKELEN,Exploration SAP,2020-05-28,11:37:35,00:00:11
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Commande interv. 40 4000101510 créée par Gilles VANDERKELEN,Exploration SAP,2020-05-28,11:37:52,00:00:10
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Commande interv. 40 4000101510 créée par Gilles VANDERKELEN,Exploration SAP,2020-05-28,11:39:40,00:00:10
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Commande interv. 40 4000101510 créée par Gilles VANDERKELEN,Exploration SAP,2020-05-28,11:40:05,00:00:04
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Commande interv. 40 4000101510 créée par Gilles VANDERKELEN,Exploration SAP,2020-05-28,11:41:02,00:00:14
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Sans titre - Message (HTML),Helpdesk général,2020-05-28,11:37:29,00:00:03
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Sans titre - Message (HTML),Helpdesk général,2020-05-28,11:37:34,00:00:01
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Sans titre - Message (HTML),Exploration SAP,2020-05-28,11:37:47,00:00:04
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:38:12,00:01:07
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:39:22,00:00:03
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:39:52,00:00:13
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:40:10,00:00:12
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:40:56,00:00:06
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:41:29,00:00:46
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:42:18,00:00:18
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Créer commande d'achat,Exploration SAP,2020-05-28,11:42:52,00:00:14
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Analyse Détermination prix,Exploration SAP,2020-05-28,11:40:22,00:00:33
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Type de condition 28 Entrées,Exploration SAP,2020-05-28,11:41:16,00:00:13
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Message éditer,Exploration SAP,2020-05-28,11:42:36,00:00:06
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Message éditer,Exploration SAP,2020-05-28,11:42:50,00:00:02
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,Aperçu avant impression pour page LOCL de 00001 00002,Exploration SAP,2020-05-28,11:42:42,00:00:07
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Stefano CRAPANZANO - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,11:43:33,00:00:03
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Stefano CRAPANZANO - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-05-28,11:46:28,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,RE: Question - condition - frais administratif - Message (HTML),Helpdesk général,2020-05-28,11:43:37,00:02:43
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,RE: Question - condition - frais administratif - Message (HTML),Helpdesk général,2020-05-28,11:46:23,00:00:04
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,RE: Question - condition - frais administratif - Message (HTML),Helpdesk général,2020-05-28,13:41:08,00:00:08
+Greenshot.exe,stefano.crapanzano@chu.ulg.ac.be,RE: Question - condition - frais administratif - Message (HTML),Helpdesk général,2020-05-28,13:41:25,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Orthographe : Français (Belgique),Helpdesk général,2020-05-28,11:46:21,00:00:02
+Greenshot.exe,stefano.crapanzano@chu.ulg.ac.be,Greenshot capture form,Helpdesk général,2020-05-28,13:41:16,00:00:08
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Ouvrir,Tâches diverses,2020-05-28,13:41:29,00:00:08

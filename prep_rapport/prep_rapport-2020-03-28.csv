@@ -1,0 +1,69 @@
+Active app,Email,Description,Project,Start date,Start time,Duration
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - python  main.py,IT,2020-03-28,16:47:43,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-03-28,16:47:44,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-03-28,16:49:24,00:00:03
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-03-29,16:51:04,00:00:08
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-10-25,16:51:45,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-10-24,16:53:29,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-10-24,16:53:34,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-10-24,16:53:36,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-10-24,16:54:16,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-02-17,16:54:38,00:00:07
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-02-17,16:54:52,00:00:04
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-02-17,16:55:10,00:00:01
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-03-28,16:47:46,00:00:07
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-03-28,16:49:22,00:00:02
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-03-29,16:49:31,00:00:02
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-03-29,16:50:20,00:00:07
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-03-29,16:50:42,00:00:01
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-03-29,16:50:58,00:00:05
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-10-25,16:51:19,00:00:04
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-10-25,16:51:42,00:00:03
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-10-24,16:51:51,00:00:01
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-10-24,16:52:07,00:00:03
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe,IT,2020-10-24,16:52:17,00:00:01
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - perl  -d C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-03-28,16:47:53,00:00:04
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - perl  -d C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-03-29,16:49:33,00:00:03
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - perl  -d C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-03-29,16:50:43,00:00:02
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - perl  -d C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-10-25,16:51:24,00:00:01
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\system32\cmd.exe - perl  -d C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-10-24,16:51:52,00:00:02
+PerlDB.exe,stefano.crapanzano@chu.ulg.ac.be,ActiveState Perl Debugger - C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,,2020-03-28,16:47:58,00:01:24
+PerlDB.exe,stefano.crapanzano@chu.ulg.ac.be,ActiveState Perl Debugger - C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,,2020-03-29,16:49:37,00:00:43
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,ActiveState Perl Debugger - C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-03-29,16:50:46,00:00:12
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,ActiveState Perl Debugger - C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,IT,2020-10-25,16:51:25,00:00:16
+PerlDB.exe,stefano.crapanzano@chu.ulg.ac.be,ActiveState Perl Debugger - C:\Users\c158492\ProjetBoulot\PERL\TEST\test.pl,,2020-10-24,16:51:55,00:00:12
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Date et heure,,2020-03-28,16:49:27,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Date et heure,,2020-03-29,16:51:12,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Date et heure,,2020-10-25,16:51:47,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Date et heure,,2020-10-24,16:51:50,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Date et heure,,2020-10-24,16:54:18,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Date et heure,,2020-02-17,16:54:31,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Réglage de la date et de l’heure,,2020-03-28,16:49:29,00:00:02
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Réglage de la date et de l’heure,,2020-03-29,16:51:14,00:00:05
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Réglage de la date et de l’heure,,2020-10-25,16:51:49,00:00:01
+rundll32.exe,stefano.crapanzano@chu.ulg.ac.be,Réglage de la date et de l’heure,,2020-10-24,16:54:19,00:00:11
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\TEST\test.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-03-29,16:50:27,00:00:15
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\TEST\test.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:52:11,00:00:06
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\TEST\test.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:52:18,00:00:02
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\TEST\test.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:52:36,00:00:25
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\TEST\test.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:53:13,00:00:04
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Log Messages - TortoiseSVN,IT,2020-10-24,16:52:20,00:00:07
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Log Messages - TortoiseSVN,IT,2020-10-24,16:53:31,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_FTP_MONITOR.pl - Notepad++ [Administrator],IT,2020-10-24,16:52:28,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_FTP_MONITOR.pl - Notepad++ [Administrator],IT,2020-10-24,16:53:01,00:00:12
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_FTP_MONITOR.pl - Notepad++ [Administrator],IT,2020-10-24,16:53:45,00:00:18
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_FTP_MONITOR.pl - Notepad++ [Administrator],IT,2020-02-17,16:54:51,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,*\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_FTP_MONITOR.pl - Notepad++ [Administrator],IT,2020-10-24,16:52:29,00:00:07
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,Untrusted Server's Certificate,IT,2020-10-24,16:53:18,00:00:02
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\CHL_ERP_FTP_MONITOR\CHL_ERP_FTP_MONITOR.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:53:21,00:00:08
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\CHL_ERP_FTP_MONITOR\CHL_ERP_FTP_MONITOR.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:53:35,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\CHL_ERP_FTP_MONITOR\CHL_ERP_FTP_MONITOR.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-10-24,16:53:37,00:00:07
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_FTP_MONITOR.pl Revision 1115 - CHL_ERP_FTP_MONITOR.pl Revision 1116],IT,2020-10-24,16:53:32,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,IT,2020-10-24,16:54:03,00:00:04
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de Réception - Zimbra - Stefano Crapanzano - Outlook,Helpdesk général,2020-10-24,16:54:07,00:00:04
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-10-24,16:54:12,00:00:03
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-02-17,16:54:32,00:00:06
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-02-17,16:54:57,00:00:06
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-02-17,16:55:04,00:00:05
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,C:\Users\c158492\ProjetBoulot\PYTHON\automatic_toggl\prep_rapport\prep_rapport-2020-02-17.csv - Notepad++ [Administrator],IT,2020-02-17,16:54:46,00:00:04
+saplogon.exe,stefano.crapanzano@chu.ulg.ac.be,SAP GUI for Windows 750,Exploration SAP,2020-02-17,16:55:03,00:00:01

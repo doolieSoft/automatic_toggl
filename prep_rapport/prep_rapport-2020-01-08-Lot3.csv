@@ -1,0 +1,42 @@
+Active app,Email,Description,Project,Start date,Start time,Duration
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : automatic_toggl - python  main.py,IT,2020-01-08,11:08:02,00:00:08
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : automatic_toggl - python  main.py,IT,2020-01-08,11:17:06,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:08:10,00:00:07
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:08:20,00:00:05
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:09:18,00:00:01
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:09:33,00:00:01
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:09:36,00:00:33
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:10:14,00:00:03
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:11:02,00:00:07
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de réception - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:17:03,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Sent - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:08:17,00:00:02
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Sent - erp.sai@chuliege.be - Outlook,Helpdesk général,2020-01-08,11:10:10,00:00:03
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-01-08,11:08:25,00:00:52
+firefox.exe,stefano.crapanzano@chu.ulg.ac.be,Lecture documentation,Tâches diverses,2020-01-08,11:09:19,00:00:13
+OUTLOOK.EXE,stefano.crapanzano@chu.ulg.ac.be,Boîte de Réception - Zimbra - Stefano Crapanzano - Outlook,Helpdesk général,2020-01-08,11:09:34,00:00:02
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\CHL_ERP_TRANSFER_FILE_SC.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-01-08,11:10:17,00:00:06
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL [C:\Users\c158492\ProjetBoulot\PERL] - ...\CHL_ERP_TRANSFER_FILE_SC.pl [PERL] - IntelliJ IDEA (Administrator),IT,2020-01-08,11:11:09,00:00:20
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,PE2_203 - sftp://PE2U2FTP@153.89.110.38 - FileZilla,Helpdesk général,2020-01-08,11:10:23,00:00:18
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,FtpToFtp,Helpdesk général,2020-01-08,11:10:41,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-01-08,11:10:42,00:00:19
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-01-08,11:11:36,00:00:30
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-01-08,11:16:58,00:00:04
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2020-01-08,11:17:05,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,C:\Users\c158492\ProjetBoulot\PYTHON\automatic_toggl_old\rapport\rapport-2020-01-07.csv - Notepad++ [Administrator],IT,2020-01-08,11:11:30,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_TRANSFER_FILE_SC.pl - Notepad++ [Administrator],IT,2020-01-08,11:11:31,00:00:01
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_TRANSFER_FILE_SC.pl - Notepad++ [Administrator],IT,2020-01-08,11:11:34,00:00:02
+notepad++.exe,stefano.crapanzano@chu.ulg.ac.be,*\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP\CHL_ERP_TRANSFER_FILE_SC.pl - Notepad++ [Administrator],IT,2020-01-08,11:11:32,00:00:01
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,Commit,IT,2020-01-08,11:12:07,00:00:02
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:12:09,00:00:08
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:12:25,00:00:02
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:13:08,00:00:02
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:15:22,00:00:02
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:15:50,00:00:07
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:16:15,00:00:09
+TortoiseProc.exe,stefano.crapanzano@chu.ulg.ac.be,\\filesrv01.st.chulg\oazis_prod\APPL_PROD\SOURCES\PERL\ERP - Commit - TortoiseSVN,IT,2020-01-08,11:16:54,00:00:04
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_EXPORT_FILE_TO_ERP.bak : Working Base  Revision 865 - CHL_ERP_EXPORT_FILE_TO_ERP.bak : Working Copy],IT,2020-01-08,11:12:18,00:00:07
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_EXTR_FACT.bak : Working Base  Revision 1041 - CHL_ERP_EXTR_FACT.bak : Working Copy],IT,2020-01-08,11:12:27,00:00:40
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_EXTR_FACT.pl : Working Base  Revision 1041 - CHL_ERP_EXTR_FACT.pl : Working Copy],IT,2020-01-08,11:13:10,00:02:12
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_FTP_MONITOR.pl : Working Base  Revision 1019 - CHL_ERP_FTP_MONITOR.pl : Working Copy],IT,2020-01-08,11:15:25,00:00:25
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_PSRL_COMPTA_CNRF_MUT_VERS_SAP.pl : Working Base  Revision 1091 - CHL_ERP_PSRL_COMPTA_CNRF_MUT_VERS_SAP.pl : Working Copy],IT,2020-01-08,11:15:57,00:00:18
+WinMergeU.exe,stefano.crapanzano@chu.ulg.ac.be,WinMerge - [CHL_ERP_TRANSFER_FILE.pl : Working Base  Revision 1096 - CHL_ERP_TRANSFER_FILE.pl : Working Copy],IT,2020-01-08,11:16:25,00:00:28

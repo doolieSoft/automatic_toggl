@@ -1,0 +1,36 @@
+Active app,Email,Description,Project,Start date,Start time,Duration
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\System32\cmd.exe - python  main.py,IT,2023-05-09,11:47:11,00:00:06
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : C:\Windows\System32\cmd.exe - python  main.py,IT,2023-05-09,11:52:57,00:00:01
+SearchApp.exe,stefano.crapanzano@chu.ulg.ac.be,Recherche,,2023-05-09,11:47:17,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2023-05-09,11:47:20,00:00:07
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2023-05-09,11:48:19,00:00:01
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2023-05-09,11:49:59,00:00:09
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2023-05-09,11:50:39,00:00:02
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Accueil - Mozilla Thunderbird,Helpdesk général,2023-05-09,11:47:28,00:00:04
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - stefano.crapanzano@chuliege.be - Mozilla Thunderbird,Helpdesk général,2023-05-09,11:47:32,00:00:06
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - stefano.crapanzano@chuliege.be - Mozilla Thunderbird,Helpdesk général,2023-05-09,11:49:36,00:00:23
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - stefano.crapanzano@chuliege.be - Mozilla Thunderbird,Helpdesk général,2023-05-09,11:50:41,00:00:06
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - stefano.crapanzano@chuliege.be - Mozilla Thunderbird,Helpdesk général,2023-05-09,11:52:55,00:00:01
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - erp.sai@chuliege.be - Mozilla Thunderbird,Helpdesk général,2023-05-09,11:47:38,00:00:41
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - erp.sai@chuliege.be - Mozilla Thunderbird,Tâches diverses,2023-05-09,11:49:33,00:00:02
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL – C:\Users\c158492\SVN_LOCAL\PERL\UTIL\SQL_TO_XLS_bb.pl Administrator,IT,2023-05-09,11:48:21,00:00:05
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL – C:\Users\c158492\SVN_LOCAL\PERL\UTIL\SQL_TO_XLS_SC.pl Administrator,IT,2023-05-09,11:48:26,00:01:01
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,PERL – C:\Users\c158492\SVN_LOCAL\PERL\UTIL\SQL_TO_XLS_SC.pl Administrator,IT,2023-05-09,11:49:28,00:00:01
+idea64.exe,stefano.crapanzano@chu.ulg.ac.be,Nouvel onglet - Google Chrome,IT,2023-05-09,11:49:27,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Nouvel onglet - Google Chrome,Tâches diverses,2023-05-09,11:49:29,00:00:03
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Nouvel onglet - Google Chrome,Tâches diverses,2023-05-09,11:51:16,00:00:14
+dbeaver.exe,stefano.crapanzano@chu.ulg.ac.be,Dbeaver,,2023-05-09,11:50:09,00:00:03
+dbeaver.exe,stefano.crapanzano@chu.ulg.ac.be,DBeaver,,2023-05-09,11:50:12,00:00:11
+dbeaver.exe,stefano.crapanzano@chu.ulg.ac.be,DBeaver 22.3.0,,2023-05-09,11:50:24,00:00:02
+dbeaver.exe,stefano.crapanzano@chu.ulg.ac.be,DBeaver 22.3.0 - <ERP BI> Script-7,,2023-05-09,11:50:26,00:00:02
+dbeaver.exe,stefano.crapanzano@chu.ulg.ac.be,DBeaver 22.3.0 - <ERP BI> Script-7,,2023-05-09,11:50:33,00:00:06
+dbeaver.exe,stefano.crapanzano@chu.ulg.ac.be,Mise à jour de la version,,2023-05-09,11:50:29,00:00:03
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,https://idp.uliege.be/simplesaml/module.php/multiauthcontext/selectsource.php?AuthState=_0186a7a8497e88d1142664a7093c6eee614f8de88d%3Ahttps%3A%2F%2Fidp.uliege.be%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fcas.uliege.be%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fmetadata.php%252Fcasserver%26RelayState%3Dhttps%253A%252F%252Fcas.uliege.be%252Fsimplesaml%252Fmodule.php%252Fcasserver%252Fcas.php%252Flogin%253Fservice%253Dhttps%25253A%25252F%25252Fsam.uliege.be%25252Fli,Tâches diverses,2023-05-09,11:50:47,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Identification - Google Chrome,Tâches diverses,2023-05-09,11:50:49,00:00:06
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,POST data - Google Chrome,Tâches diverses,2023-05-09,11:50:55,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,SAM-DB - Google Chrome,Tâches diverses,2023-05-09,11:50:56,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Sans titre - Google Chrome,Tâches diverses,2023-05-09,11:50:57,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,SAM-DB : Problème d'installation de activestate perl msi - Google Chrome,Tâches diverses,2023-05-09,11:50:59,00:00:17
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,how to force installation of perl debugger windows - Recherche Google - Google Chrome,Tâches diverses,2023-05-09,11:51:31,00:00:32
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,how to force installation of perl debugger windows - Recherche Google - Google Chrome,Tâches diverses,2023-05-09,11:52:38,00:00:17
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Installing Perl in VSCode - Stack Overflow - Google Chrome,Tâches diverses,2023-05-09,11:52:03,00:00:34

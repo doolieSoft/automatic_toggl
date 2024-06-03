@@ -1,0 +1,35 @@
+Active app,Email,Description,Project,Start date,Start time,Duration
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : Perl (command line) - python  main.py,IT,2022-09-05,08:34:42,00:00:01
+cmd.exe,stefano.crapanzano@chu.ulg.ac.be,Administrateur : Perl (command line) - python  main.py,IT,2022-09-05,08:40:30,00:00:00
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2022-09-05,08:34:43,00:00:02
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2022-09-05,08:36:50,00:00:05
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2022-09-05,08:37:58,00:00:09
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2022-09-05,08:38:20,00:00:08
+explorer.exe,stefano.crapanzano@chu.ulg.ac.be,Navigation système de fichier,IT,2022-09-05,08:38:33,00:00:01
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - erp.sai@chuliege.be - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:34:46,00:00:54
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - erp.sai@chuliege.be - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:46,00:00:04
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - erp.sai@chuliege.be - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:55,00:00:02
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Accueil - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:40,00:00:01
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Accueil - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:50,00:00:01
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,SDERP-19893 PE2 203 CHR modification date echeance - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:42,00:00:04
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,SDERP-19903 PE2 203 CHU Problème rapprochement de l'acompte sur la facture via F-32 - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:51,00:00:04
+thunderbird.exe,stefano.crapanzano@chu.ulg.ac.be,Courrier entrant - stefano.crapanzano@chuliege.be - Mozilla Thunderbird,Helpdesk général,2022-09-05,08:35:58,00:00:29
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,Identification - Google Chrome,Tâches diverses,2022-09-05,08:36:27,00:00:08
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,MYSEGI - Mise à jour - Google Chrome,Tâches diverses,2022-09-05,08:36:36,00:00:13
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,MYSEGI - Mise à jour - Google Chrome,Tâches diverses,2022-09-05,08:37:20,00:00:01
+chrome.exe,stefano.crapanzano@chu.ulg.ac.be,MYSEGI - Mise à jour - Google Chrome,Tâches diverses,2022-09-05,08:38:11,00:00:02
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Windows Installer,,2022-09-05,08:36:55,00:00:01
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:36:56,00:00:22
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:37:22,00:00:29
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:37:55,00:00:02
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:38:08,00:00:02
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:38:14,00:00:05
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:38:29,00:00:03
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:38:42,00:00:04
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Installation de DoX,,2022-09-05,08:39:55,00:00:35
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,Assistant de Connexion DoX (Ne répond pas),,2022-09-05,08:37:19,00:00:01
+msiexec.exe,stefano.crapanzano@chu.ulg.ac.be,PE2_203 - sftp://PE2U2FTP@153.89.110.38 - FileZilla,,2022-09-05,08:37:51,00:00:02
+filezilla.exe,stefano.crapanzano@chu.ulg.ac.be,Quitter FileZilla,Helpdesk général,2022-09-05,08:37:54,00:00:01
+pycharm64.exe,stefano.crapanzano@chu.ulg.ac.be,Confirm Exit,IT,2022-09-05,08:38:07,00:00:01
+taskmgr.exe,stefano.crapanzano@chu.ulg.ac.be,Gestionnaire des tâches de Windows,,2022-09-05,08:38:34,00:00:08
+taskmgr.exe,stefano.crapanzano@chu.ulg.ac.be,Gestionnaire des tâches de Windows,,2022-09-05,08:38:46,00:01:08
